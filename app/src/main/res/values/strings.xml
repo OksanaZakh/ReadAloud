@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Read Aloud</string>
+    <string name="greeting">Вітаю!</string>
+    <string name="whatIsYourName">Як тебе звати?</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="results">Результати</string>
+    <string name="settings">Налаштування</string>
+    <string name="switch_user">Змінити користувача</string>
+    <string name="exit">Вихід</string>
+    <string name="my_results">Мої результати</string>
+    <string name="text_diff">Складність тексту</string>
+    <string name="diff_low">Легкий</string>
+    <string name="diff_medium">Середній</string>
+    <string name="diff_high">Важкий</string>
+    <string name="font_size">Розмір шрифта</string>
+    <string name="size_big">Великий</string>
+    <string name="size_medium">Середній</string>
+    <string name="size_little">Дрібний</string>
+    <string name="new_user">Новий користувач</string>
+
+
 </resources>
