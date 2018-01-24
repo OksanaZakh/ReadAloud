@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout myDrawerLayout;
     private ActionBarDrawerToggle aToggle;
+    public static final String TAG_ACTIVITY = "TAG_ACTIVITY";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Creating fragment
-        ReadSectionFragment fragment = new ReadSectionFragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment_container, fragment);
-        fragmentTransaction.commit();
+
+        if (savedInstanceState == null) {
+            ReadSectionFragment fragment = new ReadSectionFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.main_fragment_container, fragment, TAG_ACTIVITY)
+                    .commit();
+        }
 
     }
 
