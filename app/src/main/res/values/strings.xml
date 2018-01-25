@@ -18,5 +18,7 @@
     <string name="size_medium">Середній</string>
     <string name="size_little">Дрібний</string>
     <string name="new_user">Новий користувач</string>
+    <string name="start_reading">Почати читання!</string>
+    <string name="user_name">твоє ім\'я</string>
 
 </resources>
