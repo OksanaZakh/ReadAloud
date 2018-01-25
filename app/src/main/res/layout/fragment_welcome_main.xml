@@ -4,56 +4,35 @@
     style="@style/MyMainBackgroundStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="com.example.administrator.readaloud.WelcomeFragment">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
+    <ImageButton
+        android:id="@+id/WelcomeFragment_AvaImgButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:adjustViewBounds="true"
+        android:foregroundGravity="center"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_account_circle_black_24px" />
 
-        <ImageButton
-            android:id="@+id/avaImgButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:foregroundGravity="center"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_account_circle_black_24px" />
-    </RelativeLayout>
+    <EditText
+        android:id="@+id/WelcomeFragment_UserNameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="твоє ім'я"
+        android:inputType="textPersonName" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/userName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignWithParentIfMissing="false"
-            android:layout_centerHorizontal="true"
-            android:ems="10"
-            android:foregroundGravity="center_horizontal"
-            android:gravity="center_horizontal"
-            android:inputType="textPersonName"
-            android:text="@string/user_name" />
-
-        <Button
-            android:id="@+id/goToReadSectionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/userName"
-            android:layout_centerHorizontal="true"
-            android:text="@string/start_reading"
-            tools:text="@string/start_reading" />
-
-    </RelativeLayout>
+    <Button
+        android:id="@+id/WelcomeFragment_GoToReadSectionBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_reading" />
 
 </LinearLayout>

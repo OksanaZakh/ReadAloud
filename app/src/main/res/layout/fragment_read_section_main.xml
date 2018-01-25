@@ -1,13 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/MyMainBackgroundStyle"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
-
 
     <SeekBar
         android:id="@+id/timeSeekBar"
@@ -16,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/readingText"
-        android:layout_marginTop="18dp" />
+        android:layout_marginTop="@dimen/layout_padding_top" />
 
     <TextView
         android:id="@+id/readingText"

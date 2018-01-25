@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="text_padding">4dp</dimen>
+    <dimen name="text_padding_half">2dp</dimen>
+    <dimen name="text_padding_double_half">6dp</dimen>
+    <dimen name="text_padding_double">8dp</dimen>
+    <dimen name="text_padding_big">16dp</dimen>
+    <dimen name="layout_padding">50dp</dimen>
+    <dimen name="layout_padding_top">16dp</dimen>
+    <dimen name="image_padding">6dp</dimen>
+
+    <dimen name="Dialog_WidthDefault">320dp</dimen>
+    <dimen name="Dialog_SpacingHorizontal">16dp</dimen>
+    <dimen name="Dialog_SpacingVertical">16dp</dimen>
+    <dimen name="Dialog_SpacingVerticalSmall">8dp</dimen>
+    <dimen name="Dialog_SpacingVerticalMicro">4dp</dimen>
+    <dimen name="Dialog_SpacingVerticalDouble">32dp</dimen>
+
+    <dimen name="ListItem_Spasing_Normal">4dp</dimen>
+
+    <dimen name="ButtonIcon_SpacingHorizontal">16dp</dimen>
+    <dimen name="ButtonIcon_SpacingVertical">8dp</dimen>
+
+
     <style name="MyReadingTextDimens">
         <item name="android:layout_marginBottom">32dp</item>
         <item name="android:layout_marginLeft">16dp</item>
