@@ -38,7 +38,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/backInSwitchUserButton"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/results" />
+            tools:text="results" />
 
         <ImageButton
             android:id="@+id/backInSwitchUserButton"

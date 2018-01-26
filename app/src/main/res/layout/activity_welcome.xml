@@ -50,7 +50,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="@string/greeting" />
+                tools:text="greeting" />
         </TableRow>
 
         <TableRow
@@ -67,7 +67,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/whatIsYourName"
+                android:text="whatIsYourName"
                 app:layout_constraintBottom_toTopOf="@+id/curUserName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

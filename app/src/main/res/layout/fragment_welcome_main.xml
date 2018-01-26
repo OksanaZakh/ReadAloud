@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/MyMainBackgroundStyle"
     android:layout_width="match_parent"
@@ -8,31 +7,52 @@
     android:orientation="vertical"
     tools:context="com.example.administrator.readaloud.WelcomeFragment">
 
-    <ImageButton
-        android:id="@+id/WelcomeFragment_AvaImgButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        android:adjustViewBounds="true"
-        android:foregroundGravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_account_circle_black_24px" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/WelcomeFragment_UserNameEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:gravity="center_horizontal"
-        android:hint="твоє ім'я"
-        android:inputType="textPersonName" />
+        <ImageButton
+            android:id="@+id/WelcomeFragment_AvaImgButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:foregroundGravity="center"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_account_circle_black_24px" />
+    </RelativeLayout>
 
-    <Button
-        android:id="@+id/WelcomeFragment_GoToReadSectionBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/start_reading" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/WelcomeFragment_userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignWithParentIfMissing="false"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:foregroundGravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:hint="@string/welcome_fragment_editText_user_name"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/WelcomeFragment_goToReadSectionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/WelcomeFragment_userName"
+            android:layout_centerHorizontal="true"
+            android:text="@string/welcome_fragment_button_start_reading" />
+
+    </RelativeLayout>
 
 </LinearLayout>
