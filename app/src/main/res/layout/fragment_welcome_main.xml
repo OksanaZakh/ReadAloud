@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/WelcomeFragment_AvaImgButton"
+            android:id="@+id/WelcomeFragment_avaImgButton"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
