@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/MyMainBackgroundStyle"
+    style="@style/MainBackgroundStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
@@ -14,16 +14,10 @@
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/WelcomeFragment_avaImgButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:foregroundGravity="center"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_account_circle_black_24px" />
+            android:id="@+id/WelcomeFragment_AvaImgButton"
+            android:src="@drawable/ic_account_circle_black_24px"
+            style="@style/WelcomeFragAvaDimens" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -47,8 +41,7 @@
 
         <Button
             android:id="@+id/WelcomeFragment_goToReadSectionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/MainButtonDimens"
             android:layout_below="@+id/WelcomeFragment_userName"
             android:layout_centerHorizontal="true"
             android:text="@string/welcome_fragment_button_start_reading" />

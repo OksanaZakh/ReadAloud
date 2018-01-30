@@ -39,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/backInSettingsButton"
         app:layout_constraintTop_toTopOf="@+id/toolbarSettings"
-        tools:text="settings" />
+        tools:text="@string/settings" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,7 +63,7 @@
                 android:layout_height="87dp"
                 android:layout_weight="1"
                 android:text="TextView"
-                tools:text="text_diff" />
+                tools:text="@string/text_diff" />
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -79,7 +79,7 @@
                         android:layout_width="216dp"
                         android:layout_height="wrap_content"
                         android:checked="true"
-                        tools:text="diff_low" />
+                        tools:text="@string/diff_low" />
                 </TableRow>
 
                 <TableRow
@@ -91,7 +91,7 @@
                         android:layout_width="278dp"
                         android:layout_height="wrap_content"
                         android:text="RadioButton"
-                        tools:text="diff_medium" />
+                        tools:text="@string/diff_medium" />
                 </TableRow>
 
                 <TableRow
@@ -103,7 +103,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="RadioButton"
-                        tools:text="diff_high" />
+                        tools:text="@string/diff_high" />
                 </TableRow>
             </TableLayout>
 
@@ -120,7 +120,7 @@
                 android:layout_height="87dp"
                 android:layout_weight="1"
                 android:text="TextView"
-                tools:text="font_size" />
+                tools:text="@string/font_size" />
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -137,7 +137,7 @@
                         android:layout_height="wrap_content"
                         android:checked="true"
                         android:text="RadioButton"
-                        tools:text="size_big" />
+                        tools:text="@string/size_big" />
                 </TableRow>
 
                 <TableRow
@@ -149,7 +149,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="RadioButton"
-                        tools:text="size_medium" />
+                        tools:text="@string/size_medium" />
                 </TableRow>
 
                 <TableRow
@@ -161,7 +161,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="RadioButton"
-                        tools:text="size_little" />
+                        tools:text="@string/size_little" />
                 </TableRow>
             </TableLayout>
 

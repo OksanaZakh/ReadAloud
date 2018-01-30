@@ -23,18 +23,21 @@ public class WelcomeUserAvatarDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View viewRoot = inflater.inflate(R.layout.dialog_fragment_welcome_user_ava_main, container, false);
+        View rootView = inflater.inflate(R.layout.dialog_fragment_welcome_user_ava_main, container, false);
 
-        avatarsGridView = viewRoot.findViewById(R.id.WelcomeUserAvatarDialogFragment_avaGridView);
-        cancelButton = viewRoot.findViewById(R.id.WelcomeUserAvatarDialogFragment_cancelButton);
+        avatarsGridView = rootView.findViewById(R.id.WelcomeUserAvatarDialogFragment_avaGridView);
+        cancelButton = rootView.findViewById(R.id.WelcomeUserAvatarDialogFragment_cancelButton);
 
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
+        cancelButton.setOnClickListener(cancelListener);
 
-        return viewRoot;
+        return rootView;
     }
+
+    View.OnClickListener cancelListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dismiss();
+        }
+    };
+
 }
