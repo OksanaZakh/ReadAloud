@@ -1,9 +1,15 @@
 <resources>
     <string name="app_name">Read Aloud</string>
-    <string name="greeting">Вітаю!</string>
-    <string name="whatIsYourName">Як тебе звати?</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="welcome_fragment_button_start_reading">Почати читання!</string>
+    <string name="welcome_fragment_editText_user_name">твоє ім\'я</string>
+    <string name="welcome_user_ava_dialog_fragment_button_cancel">відміна</string>
+    <string name="welcome_user_ava_dialog_fragment_title">Вибери аватар</string>
+
+    // Пока оставила, удалю позже
+    <string name="greeting">Вітаю!</string>
+    <string name="whatIsYourName">Як тебе звати?</string>
     <string name="results">Результати</string>
     <string name="settings">Налаштування</string>
     <string name="switch_user">Змінити користувача</string>
@@ -20,5 +26,7 @@
     <string name="new_user">Новий користувач</string>
     <string name="start_reading">Почати читання!</string>
     <string name="user_name">твоє ім\'я</string>
+    //Удалить
+
 
 </resources>
