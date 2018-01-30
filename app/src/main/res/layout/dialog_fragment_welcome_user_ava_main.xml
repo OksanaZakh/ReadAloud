@@ -7,29 +7,13 @@
 
     <GridView
         android:id="@+id/WelcomeUserAvatarDialogFragment_avaGridView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/WelcomeUserAvatarDialogFragment_cancelButton"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentTop="true"
-        android:layout_alignTop="@+id/WelcomeUserAvatarDialogFragment_cancelButton"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
-        android:numColumns="3">
+        style="@style/MyDialogFragmGridViewDimens">
 
     </GridView>
 
     <Button
         android:id="@+id/WelcomeUserAvatarDialogFragment_cancelButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentTop="false"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="false"
-        android:layout_margin="16dp"
-        android:text="@string/welcome_user_ava_dialog_fragment_button_cancel" />
+        android:text="@string/welcome_user_ava_dialog_fragment_button_cancel"
+        style="@style/MyCancelButtonInDialogFragmentDimens" />
 
 </RelativeLayout>

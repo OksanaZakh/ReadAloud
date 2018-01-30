@@ -23,7 +23,7 @@
     <dimen name="ButtonIcon_SpacingVertical">8dp</dimen>
 
 
-    <style name="MyReadingTextDimens">
+    <style name="MyReadingTextDimens" parent="AppTheme">
         <item name="android:layout_marginBottom">32dp</item>
         <item name="android:layout_marginLeft">16dp</item>
         <item name="android:layout_marginRight">16dp</item>
@@ -33,9 +33,47 @@
     <style name="MyMainButtonDimens" parent="android:Widget.Material.ImageButton">
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_margin">8dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_weight">1</item>
     </style>
 
-    <style name="MySeekBarDimens">
+    <style name="MySeekBarDimens" parent="AppTheme">
         <item name="android:layout_margin">16dp</item>
+    </style>
+
+    <style name="MyCancelButtonInDialogFragmentDimens" parent="AppTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentEnd">false</item>
+        <item name="android:layout_alignParentTop">false</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_centerInParent">false</item>
+        <item name="android:layout_margin">16dp</item>
+    </style>
+
+    <style name="MyDialogFragmGridViewDimens" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_above">@+id/WelcomeUserAvatarDialogFragment_cancelButton</item>
+        <item name="android:layout_alignParentStart">false</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignTop">@+id/WelcomeUserAvatarDialogFragment_cancelButton
+        </item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:numColumns">3</item>
+    </style>
+
+    <style name="MyWelcomeFragAvaDimens" parent="AppTheme">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:foregroundGravity">center</item>
+        <item name="android:scaleType">fitCenter</item>
     </style>
 </resources>

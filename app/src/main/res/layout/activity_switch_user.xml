@@ -10,7 +10,6 @@
         android:layout_height="match_parent">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbarSwitchUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="455dp"
@@ -47,7 +46,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/backInSwitchUserButton"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="switch_user" />
+            tools:text="@string/switch_user" />
 
         <Button
             android:id="@+id/newUserButton"
@@ -63,7 +62,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/listOfUsers"
-            tools:text="new_user" />
+            tools:text="@string/new_user" />
 
         <ListView
             android:id="@+id/listOfUsers"
