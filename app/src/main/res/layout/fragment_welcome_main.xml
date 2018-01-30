@@ -17,6 +17,7 @@
             android:id="@+id/WelcomeFragment_AvaImgButton"
             android:src="@drawable/ic_account_circle_black_24px"
             style="@style/WelcomeFragAvaDimens" />
+
     </RelativeLayout>
 
     <RelativeLayout

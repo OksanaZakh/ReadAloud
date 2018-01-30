@@ -4,6 +4,7 @@
     <string name="close">Close</string>
     <string name="welcome_fragment_button_start_reading">Почати читання!</string>
     <string name="welcome_fragment_editText_user_name">твоє ім\'я</string>
+    <string name="welcome_fragment_toast_put_user_name">Введи своє ім\'я</string>
     <string name="welcome_user_ava_dialog_fragment_button_cancel">відміна</string>
     <string name="welcome_user_ava_dialog_fragment_title">Вибери аватар</string>
 
