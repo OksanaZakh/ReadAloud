@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/MyMainBackgroundStyle"
+    style="@style/MainBackgroundStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <GridView
         android:id="@+id/WelcomeUserAvatarDialogFragment_avaGridView"
-        style="@style/MyDialogFragmGridViewDimens">
+        style="@style/DialogFragmGridViewDimens">
 
     </GridView>
 
     <Button
         android:id="@+id/WelcomeUserAvatarDialogFragment_cancelButton"
         android:text="@string/welcome_user_ava_dialog_fragment_button_cancel"
-        style="@style/MyCancelButtonInDialogFragmentDimens" />
+        style="@style/CancelButtonInDialogFragmentDimens" />
 
 </RelativeLayout>

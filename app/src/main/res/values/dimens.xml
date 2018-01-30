@@ -23,25 +23,25 @@
     <dimen name="ButtonIcon_SpacingVertical">8dp</dimen>
 
 
-    <style name="MyReadingTextDimens" parent="AppTheme">
+    <style name="MainReadingTextDimens" parent="AppTheme">
         <item name="android:layout_marginBottom">32dp</item>
         <item name="android:layout_marginLeft">16dp</item>
         <item name="android:layout_marginRight">16dp</item>
         <item name="android:textSize">24sp</item>
     </style>
 
-    <style name="MyMainButtonDimens" parent="android:Widget.Material.ImageButton">
+    <style name="MainButtonDimens" parent="android:Widget.Material.ImageButton">
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_margin">8dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_weight">1</item>
     </style>
 
-    <style name="MySeekBarDimens" parent="AppTheme">
+    <style name="MainSeekBarDimens" parent="AppTheme">
         <item name="android:layout_margin">16dp</item>
     </style>
 
-    <style name="MyCancelButtonInDialogFragmentDimens" parent="AppTheme">
+    <style name="CancelButtonInDialogFragmentDimens" parent="AppTheme">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentBottom">true</item>
@@ -52,7 +52,7 @@
         <item name="android:layout_margin">16dp</item>
     </style>
 
-    <style name="MyDialogFragmGridViewDimens" parent="AppTheme">
+    <style name="DialogFragmGridViewDimens" parent="AppTheme">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_above">@+id/WelcomeUserAvatarDialogFragment_cancelButton</item>
@@ -66,7 +66,7 @@
         <item name="android:numColumns">3</item>
     </style>
 
-    <style name="MyWelcomeFragAvaDimens" parent="AppTheme">
+    <style name="WelcomeFragAvaDimens" parent="AppTheme">
         <item name="android:layout_width">100dp</item>
         <item name="android:layout_height">100dp</item>
         <item name="android:layout_centerHorizontal">true</item>

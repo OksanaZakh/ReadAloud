@@ -11,7 +11,7 @@
 
     </style>
 
-    <style name="MyMainBackgroundStyle" parent="AppTheme">
+    <style name="MainBackgroundStyle" parent="AppTheme">
         <item name="android:background">@color/backgroundReadingTextColor</item>
     </style>
 

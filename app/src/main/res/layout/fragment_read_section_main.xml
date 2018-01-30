@@ -1,13 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/MyMainBackgroundStyle"
+    style="@style/MainBackgroundStyle"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
     <SeekBar
         android:id="@+id/ReadSectionFragment_TimeSeekBar"
-        style="@style/MySeekBarDimens"
+        style="@style/MainSeekBarDimens"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -16,7 +16,7 @@
 
     <TextView
         android:id="@+id/ReadSectionFagment_ReadingTextView"
-        style="@style/MyReadingTextDimens"
+        style="@style/MainReadingTextDimens"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/ReadSectionFragment_ButtonLinearLayout"
@@ -38,17 +38,17 @@
 
         <ImageButton
             android:id="@+id/ReadSectionFragment_ButtonStart"
-            style="@style/MyMainButtonDimens"
+            style="@style/MainButtonDimens"
             app:srcCompat="@drawable/ic_play_arrow_black_24px" />
 
         <ImageButton
             android:id="@+id/ReadSectionFragment_ButtonPause"
-            style="@style/MyMainButtonDimens"
+            style="@style/MainButtonDimens"
             app:srcCompat="@drawable/ic_pause_black_24px" />
 
         <ImageButton
             android:id="@+id/ReadSectionFragment_ButtonRestart"
-            style="@style/MyMainButtonDimens"
+            style="@style/MainButtonDimens"
             app:srcCompat="@drawable/ic_replay_black_24px" />
 
     </LinearLayout>
