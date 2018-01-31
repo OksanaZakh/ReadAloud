@@ -15,5 +15,8 @@
         <item name="android:background">@color/backgroundReadingTextColor</item>
     </style>
 
+    <style name="SecondaryBackgroundStyle" parent="AppTheme">
+        <item name="android:background">@color/primaryColor</item>
+    </style>
 
 </resources>

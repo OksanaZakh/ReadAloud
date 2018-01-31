@@ -14,9 +14,9 @@
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/WelcomeFragment_AvaImgButton"
-            android:src="@drawable/ic_account_circle_black_24px"
-            style="@style/WelcomeFragAvaDimens" />
+            android:id="@+id/WelcomeFragment_avaImgButton"
+            style="@style/WelcomeFragAvaDimens"
+            android:src="@drawable/ic_account_circle_black_24px" />
 
     </RelativeLayout>
 
@@ -44,7 +44,7 @@
             style="@style/MainButtonDimens"
             android:layout_below="@+id/WelcomeFragment_userName"
             android:layout_centerHorizontal="true"
-            android:text="@string/welcome_fragment_button_start_reading" />
+            android:text="@string/general_start_reading" />
 
     </RelativeLayout>
 

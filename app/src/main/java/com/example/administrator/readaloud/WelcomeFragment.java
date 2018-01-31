@@ -16,7 +16,7 @@ import android.widget.Toast;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WelcomeFragment extends Fragment {
+public class WelcomeFragment extends Fragment implements View.OnClickListener {
 
     public static final String TAG_WELCOME_FRAGMENT = "TAG_WELCOME_FRAGMENT";
     ImageButton avaButton;
@@ -33,34 +33,33 @@ public class WelcomeFragment extends Fragment {
         startReadButton = rootView.findViewById(R.id.WelcomeFragment_goToReadSectionButton);
         userName = rootView.findViewById(R.id.WelcomeFragment_userName);
 
-        avaButton.setOnClickListener(avatarPikerListener);
-        startReadButton.setOnClickListener(goToReadSectionListener);
+        avaButton.setOnClickListener(this);
+        startReadButton.setOnClickListener(this);
         userName.setOnKeyListener(goToReadSectionListenerEnter);
 
         return rootView;
     }
 
-    View.OnClickListener avatarPikerListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            FragmentManager fragmentManager = getFragmentManager();
-            WelcomeUserAvatarDialogFragment avatarDialogFragment = new WelcomeUserAvatarDialogFragment();
-            avatarDialogFragment.show(fragmentManager, TAG_WELCOME_FRAGMENT);
-        }
-    };
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.WelcomeFragment_avaImgButton:
+                FragmentManager fragmentManager = getFragmentManager();
+                WelcomeUserAvatarDialogFragment avatarDialogFragment = new WelcomeUserAvatarDialogFragment();
+                avatarDialogFragment.show(fragmentManager, TAG_WELCOME_FRAGMENT);
+                break;
 
-    View.OnClickListener goToReadSectionListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if (!userName.getText().toString().equals("")) {
-                createReadSectionFragment();
-            } else {
-                Context context = getActivity().getApplicationContext();
-                Toast toast = Toast.makeText(context, R.string.welcome_fragment_toast_put_user_name, Toast.LENGTH_LONG);
-                toast.show();
-            }
+            case R.id.WelcomeFragment_goToReadSectionButton:
+                if (!userName.getText().toString().equals("")) {
+                    createReadSectionFragment();
+                } else {
+                    Context context = getActivity().getApplicationContext();
+                    Toast toast = Toast.makeText(context, R.string.welcome_fragment_toast_put_user_name, Toast.LENGTH_LONG);
+                    toast.show();
+                }
+                break;
         }
-    };
+    }
 
     View.OnKeyListener goToReadSectionListenerEnter = new View.OnKeyListener() {
         @Override

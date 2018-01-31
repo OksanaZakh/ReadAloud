@@ -21,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
         myDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         aToggle = new ActionBarDrawerToggle(this, myDrawerLayout, R.string.open, R.string.close);
 
+        myDrawerLayout.addDrawerListener(aToggle);
+        aToggle.syncState();
+
         if (savedInstanceState == null) {
             WelcomeFragment fragment = new WelcomeFragment();
             getSupportFragmentManager().beginTransaction()
