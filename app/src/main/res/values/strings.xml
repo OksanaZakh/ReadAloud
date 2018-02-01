@@ -2,11 +2,19 @@
     <string name="app_name">Read Aloud</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
-    <string name="general_start_reading">Почати читання</string>
+    <string name="general_start_reading">Почати читати</string>
     <string name="general_results">Результати</string>
     <string name="general_settings">Налаштування</string>
     <string name="welcome_fragment_editText_user_name">твоє ім\'я</string>
     <string name="welcome_fragment_toast_put_user_name">Введи своє ім\'я</string>
     <string name="welcome_user_ava_dialog_fragment_button_cancel">відміна</string>
+    <string name="settings_fragment_textView_text_difficulty">Складність тексту</string>
+    <string name="settings_fragment_radioButton_text_diff_low">простий</string>
+    <string name="settings_fragment_radioButton_text_diff_medium">середній</string>
+    <string name="settings_fragment_radioButton_text_diff_high">складний</string>
+    <string name="settings_fragment_textView_font_size">Розмір шрифта</string>
+    <string name="settings_fragment_radioButton_font_size_big">великий</string>
+    <string name="settings_fragment_radioButton_font_size_medium">середній</string>
+    <string name="settings_fragment_radioButton_font_size_small">дрібний</string>
 
 </resources>

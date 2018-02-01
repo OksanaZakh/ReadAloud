@@ -3,7 +3,6 @@
 
     <dimen name="layout_padding_top">16dp</dimen>
 
-
     <style name="MainReadingTextDimens" parent="AppTheme">
         <item name="android:layout_marginBottom">32dp</item>
         <item name="android:layout_marginLeft">16dp</item>
@@ -56,5 +55,30 @@
         <item name="android:adjustViewBounds">true</item>
         <item name="android:foregroundGravity">center</item>
         <item name="android:scaleType">fitCenter</item>
+    </style>
+
+
+    <style name="SettingsRadioButtonDimens" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="SettingsRadioGroupDimens" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="SettingsTextViewDimens" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">20sp</item>
     </style>
 </resources>

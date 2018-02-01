@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <item
-        android:id="@+id/Menu_startReadButton"
+        android:id="@+id/menu_startReadItem"
         android:icon="@drawable/ic_home_black_24px"
         android:title="@string/general_start_reading" />
     <item
-        android:id="@+id/Menu_resultsItem"
+        android:id="@+id/menu_resultsItem"
         android:icon="@drawable/ic_grade_black_24px"
         android:title="@string/general_results" />
     <item

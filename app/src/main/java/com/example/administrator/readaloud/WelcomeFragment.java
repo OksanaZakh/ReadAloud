@@ -50,12 +50,11 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.WelcomeFragment_goToReadSectionButton:
-                if (!userName.getText().toString().equals("")) {
+                if (!userName.getText().toString().trim().isEmpty()) {
                     createReadSectionFragment();
                 } else {
-                    Context context = getActivity().getApplicationContext();
-                    Toast toast = Toast.makeText(context, R.string.welcome_fragment_toast_put_user_name, Toast.LENGTH_LONG);
-                    toast.show();
+                    Context context = getContext();
+                    Toast.makeText(context, R.string.welcome_fragment_toast_put_user_name, Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
