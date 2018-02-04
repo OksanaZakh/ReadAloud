@@ -5,7 +5,6 @@
     android:layout_height="@android:dimen/thumbnail_height"
     android:theme="@style/SecondaryBackgroundStyle">
 
-
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
@@ -13,4 +12,5 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         app:srcCompat="@mipmap/pinguin" />
+
 </android.widget.RelativeLayout>
