@@ -34,8 +34,7 @@ public class ReadSectionFragment extends Fragment {
         restartReadButton = viewRoot.findViewById(R.id.ReadSectionFragment_ButtonRestart);
         pauseReadButton = viewRoot.findViewById(R.id.ReadSectionFragment_ButtonPause);
 
-        //make menu button visible
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
 
         return viewRoot;
     }

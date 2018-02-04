@@ -1,9 +1,11 @@
 package com.example.administrator.readaloud;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +21,9 @@ import android.widget.Toast;
 public class WelcomeFragment extends Fragment implements View.OnClickListener {
 
     public static final String TAG_WELCOME_FRAGMENT = "TAG_WELCOME_FRAGMENT";
-    ImageButton avaButton;
-    Button startReadButton;
-    EditText userName;
+    private ImageButton avaButton;
+    private Button startReadButton;
+    private EditText userName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,7 +53,7 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener {
 
             case R.id.WelcomeFragment_goToReadSectionButton:
                 if (!userName.getText().toString().trim().isEmpty()) {
-                    createReadSectionFragment();
+                    startReadSectionActivity();
                 } else {
                     Context context = getContext();
                     Toast.makeText(context, R.string.welcome_fragment_toast_put_user_name, Toast.LENGTH_SHORT).show();
@@ -65,16 +67,16 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener {
         public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
             if ((keyEvent.getAction() == KeyEvent.ACTION_DOWN) &&
                     (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                createReadSectionFragment();
+                startReadSectionActivity();
             }
             return false;
         }
     };
 
-    public void createReadSectionFragment() {
-        ReadSectionFragment readSectionFragment = new ReadSectionFragment();
-        getFragmentManager().beginTransaction()
-                .add(R.id.main_fragment_container, readSectionFragment, TAG_WELCOME_FRAGMENT)
-                .commit();
+    public void startReadSectionActivity() {
+        Intent intent = new Intent(getActivity(), ReadSectionActivity.class);
+        startActivity(intent);
+
+
     }
 }

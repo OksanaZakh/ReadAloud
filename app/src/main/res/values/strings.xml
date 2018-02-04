@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Read Aloud</string>
-    <string name="open">Open</string>
-    <string name="close">Close</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
     <string name="general_start_reading">Почати читати</string>
     <string name="general_results">Результати</string>
     <string name="general_settings">Налаштування</string>

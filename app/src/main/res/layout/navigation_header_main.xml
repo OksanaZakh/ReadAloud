@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/style"
-    android:theme="@style/SecondaryBackgroundStyle"
     android:layout_width="match_parent"
-    android:layout_height="@android:dimen/thumbnail_height">
+    android:layout_height="@android:dimen/thumbnail_height"
+    android:theme="@style/SecondaryBackgroundStyle">
+
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         app:srcCompat="@mipmap/read_aloud_cartoon" />
 
 </android.widget.RelativeLayout>

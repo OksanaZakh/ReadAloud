@@ -1,13 +1,17 @@
 package com.example.administrator.readaloud;
 
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-public class SettingsActivity extends BaseToolbar {
+/**
+ * Created by Administrator on 03.02.2018.
+ */
 
-    public static final String TAG_ACTIVITY_SETTINGS = "TAG_ACTIVITY_SETTINGS";
+public class ReadSectionActivity extends BaseToolbar {
+
+    public static final String TAG_ACTIVITY_READ = "TAG_ACTIVITY_READ";
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -15,22 +19,22 @@ public class SettingsActivity extends BaseToolbar {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_read_section);
 
         if (savedInstanceState == null) {
-            SettingsFragment fragment = new SettingsFragment();
+            ReadSectionFragment fragment = new ReadSectionFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.settings_fragment_container, fragment, TAG_ACTIVITY_SETTINGS)
+                    .add(R.id.read_section_fragment_container, fragment, TAG_ACTIVITY_READ)
                     .commit();
         }
-
         toolbar = (Toolbar) findViewById(R.id.toolbarMain);
-        navigationView = (NavigationView) findViewById(R.id.settings_navigationView);
-        drawerLayout = (DrawerLayout) findViewById(R.id.settings_drawer_layout);
+        drawerLayout = (DrawerLayout) findViewById(R.id.read_section_drawer_layout);
+        navigationView = (NavigationView) findViewById(R.id.read_section_navigationView);
 
         setupToolbar(drawerLayout, toolbar);
-        setTitle(R.string.general_settings);
+        setTitle(R.string.general_start_reading);
         navigationView.setNavigationItemSelectedListener(this);
 
     }
+
 }
