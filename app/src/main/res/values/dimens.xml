@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="text_padding">4dp</dimen>
-    <dimen name="text_padding_half">2dp</dimen>
-    <dimen name="text_padding_double_half">6dp</dimen>
-    <dimen name="text_padding_double">8dp</dimen>
-    <dimen name="text_padding_big">16dp</dimen>
-    <dimen name="layout_padding">50dp</dimen>
     <dimen name="layout_padding_top">16dp</dimen>
-    <dimen name="image_padding">6dp</dimen>
-
-    <dimen name="Dialog_WidthDefault">320dp</dimen>
-    <dimen name="Dialog_SpacingHorizontal">16dp</dimen>
-    <dimen name="Dialog_SpacingVertical">16dp</dimen>
-    <dimen name="Dialog_SpacingVerticalSmall">8dp</dimen>
-    <dimen name="Dialog_SpacingVerticalMicro">4dp</dimen>
-    <dimen name="Dialog_SpacingVerticalDouble">32dp</dimen>
-
-    <dimen name="ListItem_Spasing_Normal">4dp</dimen>
-
-    <dimen name="ButtonIcon_SpacingHorizontal">16dp</dimen>
-    <dimen name="ButtonIcon_SpacingVertical">8dp</dimen>
-
 
     <style name="MainReadingTextDimens" parent="AppTheme">
         <item name="android:layout_marginBottom">32dp</item>
@@ -66,7 +46,7 @@
         <item name="android:numColumns">3</item>
     </style>
 
-    <style name="WelcomeFragAvaDimens" parent="AppTheme">
+    <style name="WelcomeFragAvaDimens" parent="Base.Widget.AppCompat.Button">
         <item name="android:layout_width">100dp</item>
         <item name="android:layout_height">100dp</item>
         <item name="android:layout_centerHorizontal">true</item>
@@ -75,5 +55,36 @@
         <item name="android:adjustViewBounds">true</item>
         <item name="android:foregroundGravity">center</item>
         <item name="android:scaleType">fitCenter</item>
+    </style>
+
+
+    <style name="SettingsRadioButtonDimens" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="SettingsRadioGroupDimens" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="SettingsTextViewDimens" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="MainNavigationDrawerDimens" parent="MainBackgroundStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">start</item>
     </style>
 </resources>

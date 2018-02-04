@@ -1,0 +1,59 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="54dp"
+    tools:context=".ui.settings.SettingsSectionFragment">
+
+    <RadioGroup style="@style/SettingsRadioGroupDimens">
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/SettingsTextViewDimens"
+            android:text="@string/settings_fragment_textView_font_size" />
+
+        <RadioButton
+            android:id="@+id/SettingsFragment_radioBtnFontSizeLow"
+            style="@style/SettingsRadioButtonDimens"
+            android:checked="true"
+            android:text="@string/settings_fragment_radioButton_font_size_big" />
+
+        <RadioButton
+            android:id="@+id/SettingsFragment_radioBtnFontSizeMedium"
+            style="@style/SettingsRadioButtonDimens"
+            android:text="@string/settings_fragment_radioButton_font_size_medium" />
+
+        <RadioButton
+            android:id="@+id/SettingsFragment_radioBtnFontSizeHigh"
+            style="@style/SettingsRadioButtonDimens"
+            android:text="@string/settings_fragment_radioButton_font_size_small" />
+
+    </RadioGroup>
+
+    <RadioGroup style="@style/SettingsRadioGroupDimens">
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/SettingsTextViewDimens"
+            android:text="@string/settings_fragment_textView_text_difficulty" />
+
+        <RadioButton
+            android:id="@+id/SettingsFragment_radioBtnTextDiffLow"
+            style="@style/SettingsRadioButtonDimens"
+            android:checked="true"
+            android:text="@string/settings_fragment_radioButton_text_diff_low" />
+
+        <RadioButton
+            android:id="@+id/SettingsFragment_radioBtnTextDiffMedium"
+            style="@style/SettingsRadioButtonDimens"
+            android:text="@string/settings_fragment_radioButton_text_diff_medium" />
+
+        <RadioButton
+            android:id="@+id/SettingsFragment_radioBtnTextDiffHigh"
+            style="@style/SettingsRadioButtonDimens"
+            android:text="@string/settings_fragment_radioButton_text_diff_high" />
+
+    </RadioGroup>
+
+</LinearLayout>

@@ -1,11 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/MainBackgroundStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.example.administrator.readaloud.WelcomeFragment">
+    tools:context="com.example.administrator.readaloud.ui.welcome.WelcomeFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,9 +13,9 @@
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/WelcomeFragment_AvaImgButton"
-            android:src="@drawable/ic_account_circle_black_24px"
-            style="@style/WelcomeFragAvaDimens" />
+            android:id="@+id/WelcomeFragment_avaImgButton"
+            style="@style/WelcomeFragAvaDimens"
+            android:src="@drawable/ic_account_circle_black_24px" />
 
     </RelativeLayout>
 
@@ -44,7 +43,7 @@
             style="@style/MainButtonDimens"
             android:layout_below="@+id/WelcomeFragment_userName"
             android:layout_centerHorizontal="true"
-            android:text="@string/welcome_fragment_button_start_reading" />
+            android:text="@string/general_start_reading" />
 
     </RelativeLayout>
 

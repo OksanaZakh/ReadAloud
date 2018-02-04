@@ -1,33 +1,20 @@
 <resources>
     <string name="app_name">Read Aloud</string>
-    <string name="open">Open</string>
-    <string name="close">Close</string>
-    <string name="welcome_fragment_button_start_reading">Почати читання!</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="general_start_reading">Почати читати</string>
+    <string name="general_results">Результати</string>
+    <string name="general_settings">Налаштування</string>
     <string name="welcome_fragment_editText_user_name">твоє ім\'я</string>
     <string name="welcome_fragment_toast_put_user_name">Введи своє ім\'я</string>
     <string name="welcome_user_ava_dialog_fragment_button_cancel">відміна</string>
-    <string name="welcome_user_ava_dialog_fragment_title">Вибери аватар</string>
-
-    // Пока оставила, удалю позже
-    <string name="greeting">Вітаю!</string>
-    <string name="whatIsYourName">Як тебе звати?</string>
-    <string name="results">Результати</string>
-    <string name="settings">Налаштування</string>
-    <string name="switch_user">Змінити користувача</string>
-    <string name="exit">Вихід</string>
-    <string name="my_results">Мої результати</string>
-    <string name="text_diff">Складність тексту</string>
-    <string name="diff_low">Легкий</string>
-    <string name="diff_medium">Середній</string>
-    <string name="diff_high">Важкий</string>
-    <string name="font_size">Розмір шрифта</string>
-    <string name="size_big">Великий</string>
-    <string name="size_medium">Середній</string>
-    <string name="size_little">Дрібний</string>
-    <string name="new_user">Новий користувач</string>
-    <string name="start_reading">Почати читання!</string>
-    <string name="user_name">твоє ім\'я</string>
-    //Удалить
-
+    <string name="settings_fragment_textView_text_difficulty">Складність тексту</string>
+    <string name="settings_fragment_radioButton_text_diff_low">простий</string>
+    <string name="settings_fragment_radioButton_text_diff_medium">середній</string>
+    <string name="settings_fragment_radioButton_text_diff_high">складний</string>
+    <string name="settings_fragment_textView_font_size">Розмір шрифта</string>
+    <string name="settings_fragment_radioButton_font_size_big">великий</string>
+    <string name="settings_fragment_radioButton_font_size_medium">середній</string>
+    <string name="settings_fragment_radioButton_font_size_small">дрібний</string>
 
 </resources>
