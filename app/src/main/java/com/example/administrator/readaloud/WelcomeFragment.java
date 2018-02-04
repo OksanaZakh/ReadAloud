@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,7 +73,7 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener {
     };
 
     public void startReadSectionActivity() {
-        Intent intent = new Intent(getActivity(), ReadSectionActivity.class);
+        Intent intent = new Intent(getActivity(), BaseActivity.class);
         startActivity(intent);
 
 

@@ -2,7 +2,6 @@ package com.example.administrator.readaloud;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,8 +32,6 @@ public class ReadSectionFragment extends Fragment {
         startReadButton = viewRoot.findViewById(R.id.ReadSectionFragment_ButtonStart);
         restartReadButton = viewRoot.findViewById(R.id.ReadSectionFragment_ButtonRestart);
         pauseReadButton = viewRoot.findViewById(R.id.ReadSectionFragment_ButtonPause);
-
-        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
 
         return viewRoot;
     }
