@@ -1,4 +1,4 @@
-package com.example.administrator.readaloud;
+package com.example.administrator.readaloud.ui;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.administrator.readaloud.R;
 import com.example.administrator.readaloud.ui.read.ReadSectionFragment;
 import com.example.administrator.readaloud.ui.result.ResultSectionFragment;
 import com.example.administrator.readaloud.ui.settings.SettingsSectionFragment;
@@ -38,7 +39,7 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
                     .commit();
         }
 
-        toolbar = findViewById(R.id.toolbarMain);
+        toolbar = findViewById(R.id.toolbar_main);
         drawerLayout = findViewById(R.id.base_activity_drawer_layout);
         navigationView = findViewById(R.id.base_navigationView);
 
