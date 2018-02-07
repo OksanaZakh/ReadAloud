@@ -83,7 +83,7 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
         if (back_pressed_time + PERIOD > System.currentTimeMillis()) {
             super.onBackPressed();
         } else {
-            Toast.makeText(getBaseContext(), "Press once again to exit!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), R.string.base_activity_press_again_to_exit, Toast.LENGTH_SHORT).show();
         }
         back_pressed_time = System.currentTimeMillis();
     }

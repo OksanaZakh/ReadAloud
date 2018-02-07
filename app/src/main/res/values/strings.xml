@@ -16,5 +16,6 @@
     <string name="settings_fragment_radioButton_font_size_big">великий</string>
     <string name="settings_fragment_radioButton_font_size_medium">середній</string>
     <string name="settings_fragment_radioButton_font_size_small">дрібний</string>
+    <string name="base_activity_press_again_to_exit">Натисни ще раз назад, щоб вийти!</string>
 
 </resources>
