@@ -14,7 +14,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.administrator.readaloud.R;
-import com.example.administrator.readaloud.BaseActivity;
+import com.example.administrator.readaloud.ui.BaseActivity;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -29,7 +29,7 @@ public class ReadSectionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View viewRoot = inflater.inflate(R.layout.fragment_read_section_main, container, false);
-        readTextView = viewRoot.findViewById(R.id.ReadSectionFagment_ReadingTextView);
+        readTextView = viewRoot.findViewById(R.id.ReadSectionFragment_ReadingTextView);
         timeSeekBar = viewRoot.findViewById(R.id.ReadSectionFragment_TimeSeekBar);
         startReadButton = viewRoot.findViewById(R.id.ReadSectionFragment_ButtonStart);
         restartReadButton = viewRoot.findViewById(R.id.ReadSectionFragment_ButtonRestart);

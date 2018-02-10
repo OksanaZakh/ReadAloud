@@ -25,7 +25,10 @@
     <android.support.design.widget.NavigationView
         android:id="@+id/base_navigationView"
         style="@style/MainNavigationDrawerDimens"
+        android:fitsSystemWindows="true"
         app:headerLayout="@layout/navigation_header_main"
+        app:itemIconTint="@color/secondaryTextColor"
+        app:itemTextColor="@color/secondaryTextColor"
         app:menu="@menu/menu_navigation" />
 
 </android.support.v4.widget.DrawerLayout>
