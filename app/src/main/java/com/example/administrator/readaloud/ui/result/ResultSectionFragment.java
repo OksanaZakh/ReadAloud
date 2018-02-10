@@ -24,4 +24,5 @@ public class ResultSectionFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_result, container, false);
     }
 
+
 }

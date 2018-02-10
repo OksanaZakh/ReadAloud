@@ -11,11 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/ReadSectionFagment_ReadingTextView"
+        android:layout_alignStart="@+id/ReadSectionFragment_ReadingTextView"
         android:layout_marginTop="@dimen/layout_padding_top" />
 
     <TextView
-        android:id="@+id/ReadSectionFagment_ReadingTextView"
+        android:id="@+id/ReadSectionFragment_ReadingTextView"
         style="@style/MainReadingTextDimens"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
