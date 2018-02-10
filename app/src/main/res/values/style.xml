@@ -2,11 +2,11 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-
         <item name="android:colorPrimary">@color/primaryColor</item>
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="android:colorAccent">@color/colorAccent</item>
         <item name="android:colorButtonNormal">@color/secondaryLightColor</item>
+        <item name="android:textColorSecondary">@color/secondaryTextColor</item>
+        <item name="android:textColorPrimary">@color/secondaryTextColor</item>
 
     </style>
 
@@ -14,10 +14,6 @@
         <item name="android:background">@color/primaryColor</item>
     </style>
 
-    <style name="MainBackgroundStyle" parent="AppTheme" />
+    <style name="MainBackgroundStyle" parent="AppTheme"></style>
 
-    <style name="MainToolbarStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:textColorPrimary">@color/primaryTextColor</item>
-
-    </style>
 </resources>

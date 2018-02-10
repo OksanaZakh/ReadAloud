@@ -20,16 +20,15 @@
         android:id="@+id/base_fragment_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-    </FrameLayout>
+        android:orientation="horizontal" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/base_navigationView"
         style="@style/MainNavigationDrawerDimens"
+        android:fitsSystemWindows="true"
         app:headerLayout="@layout/navigation_header_main"
-        app:menu="@menu/menu_navigation">
-
-    </android.support.design.widget.NavigationView>
+        app:itemIconTint="@color/secondaryTextColor"
+        app:itemTextColor="@color/secondaryTextColor"
+        app:menu="@menu/menu_navigation" />
 
 </android.support.v4.widget.DrawerLayout>

@@ -1,11 +1,12 @@
-package com.example.administrator.readaloud;
+package com.example.administrator.readaloud.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.administrator.readaloud.R;
+import com.example.administrator.readaloud.ui.welcome.WelcomeFragment;
 
-    public static final String TAG_ACTIVITY = "TAG_ACTIVITY";
+public class MainActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -14,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             WelcomeFragment fragment = new WelcomeFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.main_fragment_container, fragment, TAG_ACTIVITY)
+                    .add(R.id.main_fragment_container, fragment, WelcomeFragment.TAG_WELCOME)
                     .commit();
         }
     }
