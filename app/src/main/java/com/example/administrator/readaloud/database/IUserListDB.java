@@ -1,12 +1,14 @@
 package com.example.administrator.readaloud.database;
 
+import com.example.administrator.readaloud.ui.welcome.User;
+
 import java.util.List;
 
 /**
  * Created by Administrator on 06.02.2018.
  */
 
-public interface IUser {
+public interface IUserListDB {
 
     void addUser(User user);
 

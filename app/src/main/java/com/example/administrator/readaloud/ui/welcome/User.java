@@ -1,4 +1,4 @@
-package com.example.administrator.readaloud.database;
+package com.example.administrator.readaloud.ui.welcome;
 
 /**
  * Created by Administrator on 06.02.2018.
@@ -17,21 +17,18 @@ public class User {
     public User(int id, String name, int avatarId) {
         this.id = id;
         this.name = name;
-        this.token = "";
         this.avatarId = avatarId;
     }
 
     public User(String name, int avatarId) {
         this.name = name;
-        this.token = "";
+
         this.avatarId = avatarId;
 
     }
 
     public User(String name) {
         this.name = name;
-        this.token = "";
-        this.avatarId = 0;
     }
 
     public int getId() {

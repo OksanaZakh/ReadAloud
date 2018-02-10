@@ -1,4 +1,4 @@
-package com.example.administrator.readaloud.database;
+package com.example.administrator.readaloud.ui.result;
 
 /**
  * Created by Administrator on 06.02.2018.
@@ -70,14 +70,4 @@ public class Result {
         this.date = date;
     }
 
-
-    @Override
-    public String toString() {
-        return "Result{" +
-                ", userId=" + userId +
-                ", velocity=" + velocity +
-                ", quality=" + quality +
-                ", date='" + date + '\'' +
-                '}';
-    }
 }

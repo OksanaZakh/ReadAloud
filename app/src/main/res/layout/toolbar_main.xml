@@ -3,7 +3,6 @@
     android:id="@+id/toolbar_main"
     android:layout_width="match_parent"
     android:layout_height="64dp"
-    android:background="@color/primaryColor"
-    style="@style/MainToolbarStyle">
+    android:background="@color/primaryColor">
 
 </android.support.v7.widget.Toolbar>
