@@ -6,19 +6,19 @@ package com.example.administrator.readaloud.database;
 
 public class DBHandler {
 
-    private final ResultListListDB resultListDB;
-    private final UserListListDB userListDB;
+    private final ResultListDB resultListDB;
+    private final UserListDB userListDB;
 
     public DBHandler(DBHelper helper) {
-        userListDB = new UserListListDB(helper.getWritableDatabase());
-        resultListDB = new ResultListListDB(helper.getWritableDatabase());
+        userListDB = new UserListDB(helper.getWritableDatabase());
+        resultListDB = new ResultListDB(helper.getWritableDatabase());
     }
 
-    public ResultListListDB getResultListDB() {
+    public ResultListDB getResultListDB() {
         return resultListDB;
     }
 
-    public UserListListDB getUserListDB() {
+    public UserListDB getUserListDB() {
         return userListDB;
     }
 }

@@ -49,8 +49,12 @@ public class UserListDB implements IUserListDB {
     public boolean isUserInBase(String name) {
         String selectQuery = "SELECT * FROM " + TABLE_USERS;
         Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.getCount() == 0) {
+            cursor.close();
+            return false;
+        }
         while (cursor.moveToNext()) {
-            if (cursor.getString(1).equals(name.trim())) {
+            if (cursor.getString(1).equals(name)) {
                 cursor.close();
                 return true;
             }

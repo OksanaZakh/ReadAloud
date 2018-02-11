@@ -1,6 +1,6 @@
 package com.example.administrator.readaloud.database;
 
-import com.example.administrator.readaloud.ui.welcome.User;
+import com.example.administrator.readaloud.ui.welcome.UserModel;
 
 import java.util.List;
 
@@ -10,15 +10,15 @@ import java.util.List;
 
 public interface IUserListDB {
 
-    void addUser(User user);
+    void addUser(UserModel userModel);
 
     boolean isUserInBase(String name);
 
-    List<User> getAllUsers();
+    List<UserModel> getAllUsers();
 
     int getUserCount();
 
-    int updateUser(int id, User user);
+    int updateUser(int id, UserModel userModel);
 
     void deleteUser(int id);
 
