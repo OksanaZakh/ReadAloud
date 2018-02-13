@@ -8,6 +8,7 @@ import com.example.administrator.readaloud.ui.welcome.UserModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Administrator on 06.02.2018.
@@ -95,7 +96,7 @@ public class UserListDB implements IUserListDB {
     @Override
     public int updateUser(int id, UserModel userModel) {
         ContentValues values = new ContentValues();
-        values.put(COLUMN_ID, userModel.getName());
+        values.put(COLUMN_NAME, userModel.getName());
         values.put(COLUMN_TOKEN, userModel.getToken());
         values.put(COLUMN_AVATAR_ID, userModel.getAvatarId());
         return db.update(TABLE_USERS, values, "Id = " + id, null);
@@ -108,17 +109,46 @@ public class UserListDB implements IUserListDB {
     }
 
     @Override
-    public int getUserId(String name) {
-        String selectQuery = "SELECT " + COLUMN_NAME + " FROM " + TABLE_USERS;
+    public UserModel getUser(String name) {
+        UserModel user = new UserModel();
+        String selectQuery = "SELECT * FROM " + TABLE_USERS;
         Cursor cursor = db.rawQuery(selectQuery, null);
         while (cursor.moveToNext()) {
-            if (cursor.getString(1).equals(name.trim())) {
-                int userId = Integer.parseInt(cursor.getString(0));
+            if (cursor.getString(1).equals(name)) {
+                user.setId(Integer.parseInt(cursor.getString(0)));
+                user.setName(name);
+                user.setToken(cursor.getString(2));
+                user.setAvatarId(Integer.parseInt(cursor.getString(3)));
                 cursor.close();
-                return userId;
+                return user;
             }
         }
         cursor.close();
-        return 0;
+        return null;
     }
+
+    public void makeLogOut(String name) {
+        UserModel user = getUser(name);
+        user.setToken("0");
+        updateUser(user.getId(), user);
+    }
+
+    @Override
+    public void makeLogIn(String name, int avatarId) {
+        UUID uuid = UUID.randomUUID();
+        String UUIDString = uuid.toString();
+        if (!isUserInBase(name)) {
+            UserModel user = new UserModel();
+            user.setName(name);
+            user.setToken(UUIDString);
+            user.setAvatarId(0);
+            addUser(user);
+        } else {
+            UserModel user = getUser(name);
+            user.setToken(UUIDString);
+            updateUser(user.getId(), user);
+        }
+
+    }
+
 }

@@ -1,6 +1,9 @@
 package com.example.administrator.readaloud.ui;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -10,12 +13,16 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.readaloud.R;
+import com.example.administrator.readaloud.database.DBHandler;
+import com.example.administrator.readaloud.database.DBHelper;
 import com.example.administrator.readaloud.ui.read.ReadSectionFragment;
 import com.example.administrator.readaloud.ui.result.ResultSectionFragment;
 import com.example.administrator.readaloud.ui.settings.SettingsSectionFragment;
+
 
 /**
  * Created by Administrator on 03.02.2018.
@@ -29,6 +36,9 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    private String userName;
+    private SharedPreferences preferences;
+    public TextView navigationHeaderTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +52,7 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
                     .commit();
         }
 
+
         toolbar = findViewById(R.id.toolbar_main);
         drawerLayout = findViewById(R.id.base_activity_drawer_layout);
         navigationView = findViewById(R.id.base_navigationView);
@@ -49,6 +60,11 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
         setupToolbar(drawerLayout, toolbar);
         navigationView.setNavigationItemSelectedListener(this);
 
+        preferences = getSharedPreferences(MainActivity.APP_PREFERENCES, Context.MODE_PRIVATE);
+        userName = preferences.getString(MainActivity.APP_PREFERENCES_USER, "");
+
+        navigationHeaderTextView = navigationView.getHeaderView(0).findViewById(R.id.navigation_header_main_textView_userName);
+        navigationHeaderTextView.setText(userName);
     }
 
     @Override
@@ -104,9 +120,10 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        moveTaskToBack(true);
-                        android.os.Process.killProcess(android.os.Process.myPid());
-                        System.exit(1);
+                        logOutUser();
+                        Intent welcomeIntent = new Intent(getBaseContext(), MainActivity.class);
+                        finish();
+                        startActivity(welcomeIntent);
                     }
                 })
                 .setNegativeButton(android.R.string.no, null).show();
@@ -128,5 +145,12 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
                 .replace(R.id.base_fragment_container, fragment, ReadSectionFragment.TAG_READ_SECTION)
                 .commit();
         getSupportActionBar().setTitle(R.string.general_start_reading);
+    }
+
+    public void logOutUser() {
+        DBHelper helper = new DBHelper(getBaseContext());
+        DBHandler handler = new DBHandler(helper);
+        handler.getUserListDB().makeLogOut(userName);
+        preferences.edit().clear().commit();
     }
 }
