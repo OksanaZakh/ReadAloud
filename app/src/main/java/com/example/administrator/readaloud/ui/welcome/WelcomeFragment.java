@@ -19,7 +19,7 @@ import com.example.administrator.readaloud.R;
 import com.example.administrator.readaloud.database.DBHandler;
 import com.example.administrator.readaloud.database.DBHelper;
 import com.example.administrator.readaloud.ui.BaseActivity;
-import com.example.administrator.readaloud.ui.MainActivity;
+import com.example.administrator.readaloud.utils.Constants;
 
 
 /**
@@ -48,7 +48,7 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener, V
         startReadButton.setOnClickListener(this);
         userName.setOnKeyListener(this);
 
-        preferences = getContext().getSharedPreferences(MainActivity.APP_PREFERENCES, Context.MODE_PRIVATE);
+        preferences = getContext().getSharedPreferences(Constants.APP_PREFERENCES, Context.MODE_PRIVATE);
 
         return rootView;
     }
@@ -88,8 +88,7 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener, V
 
     public void logInUser() {
         name = userName.getText().toString().trim();
-        preferences.edit().putString(MainActivity.APP_PREFERENCES_USER, name).commit();
-        preferences.edit().putBoolean(MainActivity.APP_PREFERENCES_LOGGED, true).commit();
+        preferences.edit().putString(Constants.APP_PREFERENCES_USER, name).apply();
         // avatarId identification will be here
         avatarId = 0;
         DBHelper helper = new DBHelper(getContext());

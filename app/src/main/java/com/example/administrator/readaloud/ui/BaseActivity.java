@@ -22,6 +22,7 @@ import com.example.administrator.readaloud.database.DBHelper;
 import com.example.administrator.readaloud.ui.read.ReadSectionFragment;
 import com.example.administrator.readaloud.ui.result.ResultSectionFragment;
 import com.example.administrator.readaloud.ui.settings.SettingsSectionFragment;
+import com.example.administrator.readaloud.utils.Constants;
 
 
 /**
@@ -29,9 +30,6 @@ import com.example.administrator.readaloud.ui.settings.SettingsSectionFragment;
  */
 
 public class BaseActivity extends BaseToolbar implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
-
-    private static long back_pressed_time;
-    private static long PERIOD = 2000;
 
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
@@ -60,8 +58,8 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
         setupToolbar(drawerLayout, toolbar);
         navigationView.setNavigationItemSelectedListener(this);
 
-        preferences = getSharedPreferences(MainActivity.APP_PREFERENCES, Context.MODE_PRIVATE);
-        userName = preferences.getString(MainActivity.APP_PREFERENCES_USER, "");
+        preferences = getSharedPreferences(Constants.APP_PREFERENCES, Context.MODE_PRIVATE);
+        userName = preferences.getString(Constants.APP_PREFERENCES_USER, "");
 
         navigationHeaderTextView = navigationView.getHeaderView(0).findViewById(R.id.navigation_header_main_textView_userName);
         navigationHeaderTextView.setText(userName);
@@ -104,12 +102,12 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
 
     @Override
     public void onBackPressed() {
-        if (back_pressed_time + PERIOD > System.currentTimeMillis()) {
+        if (Constants.back_pressed_time + Constants.PERIOD > System.currentTimeMillis()) {
             super.onBackPressed();
         } else {
             Toast.makeText(getBaseContext(), R.string.base_activity_press_again_to_exit, Toast.LENGTH_SHORT).show();
         }
-        back_pressed_time = System.currentTimeMillis();
+        Constants.back_pressed_time = System.currentTimeMillis();
     }
 
     public void exitFromApp() {
@@ -151,6 +149,6 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
         DBHelper helper = new DBHelper(getBaseContext());
         DBHandler handler = new DBHandler(helper);
         handler.getUserListDB().makeLogOut(userName);
-        preferences.edit().clear().commit();
+        preferences.edit().clear().apply();
     }
 }

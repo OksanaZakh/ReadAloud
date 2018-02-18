@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.administrator.readaloud.ui.welcome.UserModel;
+import com.example.administrator.readaloud.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,12 +100,12 @@ public class UserListDB implements IUserListDB {
         values.put(COLUMN_NAME, userModel.getName());
         values.put(COLUMN_TOKEN, userModel.getToken());
         values.put(COLUMN_AVATAR_ID, userModel.getAvatarId());
-        return db.update(TABLE_USERS, values, "Id = " + id, null);
+        return db.update(TABLE_USERS, values, COLUMN_ID + "=" + id, null);
     }
 
     @Override
     public void deleteUser(int id) {
-        db.delete(TABLE_USERS, "Id = " + id, null);
+        db.delete(TABLE_USERS, COLUMN_ID + "=" + id, null);
         db.close();
     }
 
@@ -129,26 +130,38 @@ public class UserListDB implements IUserListDB {
 
     public void makeLogOut(String name) {
         UserModel user = getUser(name);
-        user.setToken("0");
+        user.setToken(Constants.DEFAULT_TOKEN);
         updateUser(user.getId(), user);
     }
 
     @Override
     public void makeLogIn(String name, int avatarId) {
-        UUID uuid = UUID.randomUUID();
-        String UUIDString = uuid.toString();
+        UUID tokenUuid = UUID.randomUUID();
+        String token = tokenUuid.toString();
         if (!isUserInBase(name)) {
             UserModel user = new UserModel();
             user.setName(name);
-            user.setToken(UUIDString);
-            user.setAvatarId(0);
+            user.setToken(token);
+            user.setAvatarId(avatarId);
             addUser(user);
         } else {
             UserModel user = getUser(name);
-            user.setToken(UUIDString);
+            user.setToken(token);
             updateUser(user.getId(), user);
         }
 
     }
 
+    public int getIdOfLoggedUser() {
+        int id = 0;
+        String selectQuery = "SELECT * FROM " + TABLE_USERS;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        while (cursor.moveToNext()) {
+            if (!cursor.getString(2).equals(Constants.DEFAULT_TOKEN)) {
+                id = Integer.parseInt(cursor.getString(0));
+            }
+        }
+        cursor.close();
+        return id;
+    }
 }
