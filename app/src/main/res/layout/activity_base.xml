@@ -27,8 +27,9 @@
         style="@style/MainNavigationDrawerDimens"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/navigation_header_main"
-        app:itemIconTint="@color/secondaryTextColor"
-        app:itemTextColor="@color/secondaryTextColor"
+        app:itemBackground="@color/drawable_menu_items_background"
+        app:itemIconTint="@color/drawable_menu_items"
+        app:itemTextColor="@color/drawable_menu_items"
         app:menu="@menu/menu_navigation" />
 
 </android.support.v4.widget.DrawerLayout>

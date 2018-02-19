@@ -4,30 +4,29 @@ package com.example.administrator.readaloud.ui.welcome;
  * Created by Administrator on 06.02.2018.
  */
 
-public class User {
+public class UserModel {
 
     private int id;
     private String name;
     private String token;
     private int avatarId;
 
-    public User() {
+    public UserModel() {
     }
 
-    public User(int id, String name, int avatarId) {
+    public UserModel(int id, String name, int avatarId) {
         this.id = id;
         this.name = name;
         this.avatarId = avatarId;
     }
 
-    public User(String name, int avatarId) {
+    public UserModel(String name, int avatarId) {
         this.name = name;
-
         this.avatarId = avatarId;
 
     }
 
-    public User(String name) {
+    public UserModel(String name) {
         this.name = name;
     }
 
@@ -52,7 +51,7 @@ public class User {
     }
 
     public void setToken(String token) {
-        this.token += token;
+        this.token = token;
     }
 
     public int getAvatarId() {
@@ -63,23 +62,4 @@ public class User {
         this.avatarId = avatarId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        return name.equals(user.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return name.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return "User " + name;
-    }
 }

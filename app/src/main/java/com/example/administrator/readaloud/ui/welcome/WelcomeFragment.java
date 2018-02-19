@@ -1,6 +1,8 @@
 package com.example.administrator.readaloud.ui.welcome;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -14,7 +16,11 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.administrator.readaloud.R;
+import com.example.administrator.readaloud.database.DBHandler;
+import com.example.administrator.readaloud.database.DBHelper;
 import com.example.administrator.readaloud.ui.BaseActivity;
+import com.example.administrator.readaloud.utils.Constants;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +33,9 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener, V
     private ImageButton avaButton;
     private Button startReadButton;
     private EditText userName;
+    private String name;
+    private int avatarId;
+    SharedPreferences preferences;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -38,6 +47,9 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener, V
         avaButton.setOnClickListener(this);
         startReadButton.setOnClickListener(this);
         userName.setOnKeyListener(this);
+
+        preferences = getContext().getSharedPreferences(Constants.APP_PREFERENCES, Context.MODE_PRIVATE);
+
         return rootView;
     }
 
@@ -49,11 +61,7 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener, V
                 avatarDialogFragment.show(getFragmentManager(), WelcomeUserAvatarDialogFragment.TAG_WELCOME_USER_AVATAR);
                 break;
             case R.id.WelcomeFragment_goToReadSectionButton:
-                if (!userName.getText().toString().trim().isEmpty()) {
-                    startReadSectionActivity();
-                } else {
-                    Toast.makeText(getContext(), R.string.welcome_fragment_toast_put_user_name, Toast.LENGTH_SHORT).show();
-                }
+                startReadSectionActivity();
                 break;
         }
     }
@@ -68,8 +76,24 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener, V
     }
 
     public void startReadSectionActivity() {
-        Intent intent = new Intent(getContext(), BaseActivity.class);
-        getActivity().finish();
-        startActivity(intent);
+        if (!userName.getText().toString().trim().isEmpty()) {
+            logInUser();
+            Intent intent = new Intent(getContext(), BaseActivity.class);
+            getActivity().finish();
+            startActivity(intent);
+        } else {
+            Toast.makeText(getContext(), R.string.welcome_fragment_toast_put_user_name, Toast.LENGTH_SHORT).show();
+        }
     }
+
+    public void logInUser() {
+        name = userName.getText().toString().trim();
+        preferences.edit().putString(Constants.APP_PREFERENCES_USER, name).apply();
+        // avatarId identification will be here
+        avatarId = 0;
+        DBHelper helper = new DBHelper(getContext());
+        DBHandler handler = new DBHandler(helper);
+        handler.getUserListDB().makeLogIn(name, avatarId);
+    }
+
 }
