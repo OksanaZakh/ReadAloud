@@ -22,7 +22,6 @@ public class UserModel {
 
     public UserModel(String name, int avatarId) {
         this.name = name;
-
         this.avatarId = avatarId;
 
     }
@@ -52,7 +51,7 @@ public class UserModel {
     }
 
     public void setToken(String token) {
-        this.token += token;
+        this.token = token;
     }
 
     public int getAvatarId() {

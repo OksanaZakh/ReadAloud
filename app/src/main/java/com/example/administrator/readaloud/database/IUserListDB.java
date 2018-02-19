@@ -22,5 +22,9 @@ public interface IUserListDB {
 
     void deleteUser(int id);
 
-    int getUserId(String name);
+    UserModel getUser(String name);
+
+    void makeLogIn(String name, int avatarId);
+
+    void makeLogOut(String name);
 }
