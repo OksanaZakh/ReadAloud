@@ -14,7 +14,11 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.administrator.readaloud.R;
+import com.example.administrator.readaloud.database.DBHandler;
+import com.example.administrator.readaloud.database.DBHelper;
 import com.example.administrator.readaloud.ui.BaseActivity;
+
+import java.util.UUID;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,11 +53,7 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener, V
                 avatarDialogFragment.show(getFragmentManager(), WelcomeUserAvatarDialogFragment.TAG_WELCOME_USER_AVATAR);
                 break;
             case R.id.WelcomeFragment_goToReadSectionButton:
-                if (!userName.getText().toString().trim().isEmpty()) {
-                    startReadSectionActivity();
-                } else {
-                    Toast.makeText(getContext(), R.string.welcome_fragment_toast_put_user_name, Toast.LENGTH_SHORT).show();
-                }
+                startReadSectionActivity();
                 break;
         }
     }
@@ -68,8 +68,28 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener, V
     }
 
     public void startReadSectionActivity() {
-        Intent intent = new Intent(getContext(), BaseActivity.class);
-        getActivity().finish();
-        startActivity(intent);
+        if (!userName.getText().toString().trim().isEmpty()) {
+            createNewUser();
+            Intent intent = new Intent(getContext(), BaseActivity.class);
+            getActivity().finish();
+            startActivity(intent);
+        } else {
+            Toast.makeText(getContext(), R.string.welcome_fragment_toast_put_user_name, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void createNewUser() {
+        String name = userName.getText().toString().trim();
+        DBHelper helper = new DBHelper(getContext());
+        DBHandler handler = new DBHandler(helper);
+        if (!handler.getUserListDB().isUserInBase(name)) {
+            UUID uuid = UUID.randomUUID();
+            String UUIDString = uuid.toString();
+            UserModel user = new UserModel();
+            user.setName(name);
+            user.setToken(UUIDString);
+            user.setAvatarId(0);
+            handler.getUserListDB().addUser(user);
+        }
     }
 }

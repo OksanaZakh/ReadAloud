@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.administrator.readaloud.ui.welcome.User;
+import com.example.administrator.readaloud.ui.welcome.UserModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,16 +13,16 @@ import java.util.List;
  * Created by Administrator on 06.02.2018.
  */
 
-public class UserListListDB implements IUserListDB {
+public class UserListDB implements IUserListDB {
 
     private final SQLiteDatabase db;
     public static final String TABLE_USERS = "users";
-    public static final String COLUMN_ID = "id";
+    public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_TOKEN = "token";
     public static final String COLUMN_AVATAR_ID = "avatar_id";
 
-    public UserListListDB(SQLiteDatabase db) {
+    public UserListDB(SQLiteDatabase db) {
         this.db = db;
     }
 
@@ -37,11 +37,11 @@ public class UserListListDB implements IUserListDB {
     }
 
     @Override
-    public void addUser(User user) {
+    public void addUser(UserModel userModel) {
         ContentValues values = new ContentValues();
-        values.put(COLUMN_NAME, user.getName());
-        values.put(COLUMN_TOKEN, user.getToken());
-        values.put(COLUMN_AVATAR_ID, user.getAvatarId());
+        values.put(COLUMN_NAME, userModel.getName());
+        values.put(COLUMN_TOKEN, userModel.getToken());
+        values.put(COLUMN_AVATAR_ID, userModel.getAvatarId());
         db.insert(TABLE_USERS, null, values);
     }
 
@@ -49,8 +49,12 @@ public class UserListListDB implements IUserListDB {
     public boolean isUserInBase(String name) {
         String selectQuery = "SELECT * FROM " + TABLE_USERS;
         Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.getCount() == 0) {
+            cursor.close();
+            return false;
+        }
         while (cursor.moveToNext()) {
-            if (cursor.getString(1).equals(name.trim())) {
+            if (cursor.getString(1).equals(name)) {
                 cursor.close();
                 return true;
             }
@@ -60,22 +64,22 @@ public class UserListListDB implements IUserListDB {
     }
 
     @Override
-    public List<User> getAllUsers() {
-        List<User> userList = new ArrayList<>();
+    public List<UserModel> getAllUsers() {
+        List<UserModel> userModelList = new ArrayList<>();
         String selectQuery = "SELECT * FROM " + TABLE_USERS;
 
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         while (cursor.moveToNext()) {
-            User user = new User();
-            user.setId(Integer.parseInt(cursor.getString(0)));
-            user.setName(cursor.getString(1));
-            user.setToken(cursor.getString(2));
-            user.setAvatarId(Integer.parseInt(cursor.getString(3)));
-            userList.add(user);
+            UserModel userModel = new UserModel();
+            userModel.setId(Integer.parseInt(cursor.getString(0)));
+            userModel.setName(cursor.getString(1));
+            userModel.setToken(cursor.getString(2));
+            userModel.setAvatarId(Integer.parseInt(cursor.getString(3)));
+            userModelList.add(userModel);
         }
         cursor.close();
-        return userList;
+        return userModelList;
     }
 
     @Override
@@ -89,11 +93,11 @@ public class UserListListDB implements IUserListDB {
     }
 
     @Override
-    public int updateUser(int id, User user) {
+    public int updateUser(int id, UserModel userModel) {
         ContentValues values = new ContentValues();
-        values.put(COLUMN_ID, user.getName());
-        values.put(COLUMN_TOKEN, user.getToken());
-        values.put(COLUMN_AVATAR_ID, user.getAvatarId());
+        values.put(COLUMN_ID, userModel.getName());
+        values.put(COLUMN_TOKEN, userModel.getToken());
+        values.put(COLUMN_AVATAR_ID, userModel.getAvatarId());
         return db.update(TABLE_USERS, values, "Id = " + id, null);
     }
 

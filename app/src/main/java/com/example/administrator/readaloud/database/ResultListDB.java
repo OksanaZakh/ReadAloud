@@ -14,10 +14,10 @@ import java.util.List;
  * Created by Administrator on 06.02.2018.
  */
 
-public class ResultListListDB implements IResultListDB {
+public class ResultListDB implements IResultListDB {
 
     public static final String TABLE_RESULT = "result";
-    public static final String COLUMN_ID = "id";
+    public static final String COLUMN_ID = "_id";
     public static final String COLUMN_USER_ID = "user_id";
     public static final String COLUMN_VELOCITY = "velocity";
     public static final String COLUMN_QUALITY = "quality";
@@ -25,7 +25,7 @@ public class ResultListListDB implements IResultListDB {
 
     private final SQLiteDatabase db;
 
-    public ResultListListDB(SQLiteDatabase db) {
+    public ResultListDB(SQLiteDatabase db) {
         this.db = db;
     }
 
