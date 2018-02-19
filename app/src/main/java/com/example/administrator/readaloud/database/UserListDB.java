@@ -5,9 +5,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.administrator.readaloud.ui.welcome.UserModel;
+import com.example.administrator.readaloud.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Administrator on 06.02.2018.
@@ -95,30 +97,71 @@ public class UserListDB implements IUserListDB {
     @Override
     public int updateUser(int id, UserModel userModel) {
         ContentValues values = new ContentValues();
-        values.put(COLUMN_ID, userModel.getName());
+        values.put(COLUMN_NAME, userModel.getName());
         values.put(COLUMN_TOKEN, userModel.getToken());
         values.put(COLUMN_AVATAR_ID, userModel.getAvatarId());
-        return db.update(TABLE_USERS, values, "Id = " + id, null);
+        return db.update(TABLE_USERS, values, COLUMN_ID + "=" + id, null);
     }
 
     @Override
     public void deleteUser(int id) {
-        db.delete(TABLE_USERS, "Id = " + id, null);
+        db.delete(TABLE_USERS, COLUMN_ID + "=" + id, null);
         db.close();
     }
 
     @Override
-    public int getUserId(String name) {
-        String selectQuery = "SELECT " + COLUMN_NAME + " FROM " + TABLE_USERS;
+    public UserModel getUser(String name) {
+        UserModel user = new UserModel();
+        String selectQuery = "SELECT * FROM " + TABLE_USERS;
         Cursor cursor = db.rawQuery(selectQuery, null);
         while (cursor.moveToNext()) {
-            if (cursor.getString(1).equals(name.trim())) {
-                int userId = Integer.parseInt(cursor.getString(0));
+            if (cursor.getString(1).equals(name)) {
+                user.setId(Integer.parseInt(cursor.getString(0)));
+                user.setName(name);
+                user.setToken(cursor.getString(2));
+                user.setAvatarId(Integer.parseInt(cursor.getString(3)));
                 cursor.close();
-                return userId;
+                return user;
             }
         }
         cursor.close();
-        return 0;
+        return null;
+    }
+
+    public void makeLogOut(String name) {
+        UserModel user = getUser(name);
+        user.setToken(Constants.DEFAULT_TOKEN);
+        updateUser(user.getId(), user);
+    }
+
+    @Override
+    public void makeLogIn(String name, int avatarId) {
+        UUID tokenUuid = UUID.randomUUID();
+        String token = tokenUuid.toString();
+        if (!isUserInBase(name)) {
+            UserModel user = new UserModel();
+            user.setName(name);
+            user.setToken(token);
+            user.setAvatarId(avatarId);
+            addUser(user);
+        } else {
+            UserModel user = getUser(name);
+            user.setToken(token);
+            updateUser(user.getId(), user);
+        }
+
+    }
+
+    public int getIdOfLoggedUser() {
+        int id = 0;
+        String selectQuery = "SELECT * FROM " + TABLE_USERS;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        while (cursor.moveToNext()) {
+            if (!cursor.getString(2).equals(Constants.DEFAULT_TOKEN)) {
+                id = Integer.parseInt(cursor.getString(0));
+            }
+        }
+        cursor.close();
+        return id;
     }
 }
