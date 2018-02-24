@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.example.administrator.readaloud.R;
-import com.example.administrator.readaloud.database.DBHandler;
-import com.example.administrator.readaloud.database.DBHelper;
 import com.example.administrator.readaloud.ui.welcome.WelcomeFragment;
 import com.example.administrator.readaloud.utils.Constants;
 
@@ -17,22 +15,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        if (savedInstanceState == null) {
-            WelcomeFragment fragment = new WelcomeFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.main_fragment_container, fragment, WelcomeFragment.TAG_WELCOME)
-                    .commit();
-        }
-
-        DBHelper helper = new DBHelper(getBaseContext());
-        DBHandler handler = new DBHandler(helper);
-        int id = handler.getUserListDB().getIdOfLoggedUser();
-
-        if (id != 0) {
+        if (((ApplicationHandler) getApplication()).isUserLogged()) {
             Intent intent = new Intent(this, BaseActivity.class);
             finish();
             startActivity(intent);
+        } else {
+            if (savedInstanceState == null) {
+                WelcomeFragment fragment = new WelcomeFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.main_fragment_container, fragment, WelcomeFragment.TAG_WELCOME)
+                        .commit();
+            }
         }
     }
 

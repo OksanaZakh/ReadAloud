@@ -17,8 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.readaloud.R;
-import com.example.administrator.readaloud.database.DBHandler;
-import com.example.administrator.readaloud.database.DBHelper;
 import com.example.administrator.readaloud.ui.read.ReadSectionFragment;
 import com.example.administrator.readaloud.ui.result.ResultSectionFragment;
 import com.example.administrator.readaloud.ui.settings.SettingsSectionFragment;
@@ -146,9 +144,7 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
     }
 
     public void logOutUser() {
-        DBHelper helper = new DBHelper(getBaseContext());
-        DBHandler handler = new DBHandler(helper);
-        handler.getUserListDB().makeLogOut(userName);
+        ((ApplicationHandler) getApplication()).getHandler().getUserListDB().makeLogOut(userName);
         preferences.edit().clear().apply();
     }
 }

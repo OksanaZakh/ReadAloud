@@ -16,9 +16,8 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.administrator.readaloud.R;
-import com.example.administrator.readaloud.database.DBHandler;
-import com.example.administrator.readaloud.database.DBHelper;
 import com.example.administrator.readaloud.ui.BaseActivity;
+import com.example.administrator.readaloud.ui.ApplicationHandler;
 import com.example.administrator.readaloud.utils.Constants;
 
 
@@ -91,9 +90,7 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener, V
         preferences.edit().putString(Constants.APP_PREFERENCES_USER, name).apply();
         // avatarId identification will be here
         avatarId = 0;
-        DBHelper helper = new DBHelper(getContext());
-        DBHandler handler = new DBHandler(helper);
-        handler.getUserListDB().makeLogIn(name, avatarId);
+        ((ApplicationHandler) getActivity().getApplication()).getHandler().getUserListDB().makeLogIn(name, avatarId);
     }
 
 }
