@@ -1,4 +1,4 @@
-package com.example.administrator.readaloud.database;
+package com.example.administrator.readaloud.databaseservice;
 
 /**
  * Created by Administrator on 06.02.2018.

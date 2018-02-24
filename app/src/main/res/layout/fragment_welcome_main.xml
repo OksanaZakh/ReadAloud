@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.example.administrator.readaloud.ui.welcome.WelcomeFragment">
+    tools:context=".app.ui.welcome.WelcomeFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"

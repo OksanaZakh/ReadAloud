@@ -1,7 +1,6 @@
-package com.example.administrator.readaloud.ui.read;
+package com.example.administrator.readaloud.app.ui.read;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +9,14 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.administrator.readaloud.R;
+import com.example.administrator.readaloud.app.core.fragments.AppFragment;
 
 
 /**
  * Created by Administrator on 23.01.2018.
  */
 
-public class ReadSectionFragment extends Fragment {
+public class ReadSectionFragment extends AppFragment {
 
     public static final String TAG_READ_SECTION = "TAG_READ_SECTION";
 

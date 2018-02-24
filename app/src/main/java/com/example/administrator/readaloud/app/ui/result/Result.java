@@ -1,4 +1,4 @@
-package com.example.administrator.readaloud.ui.result;
+package com.example.administrator.readaloud.app.ui.result;
 
 /**
  * Created by Administrator on 06.02.2018.

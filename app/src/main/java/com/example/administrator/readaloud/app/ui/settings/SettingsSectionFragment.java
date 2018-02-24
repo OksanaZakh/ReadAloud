@@ -1,18 +1,14 @@
-package com.example.administrator.readaloud.ui.settings;
+package com.example.administrator.readaloud.app.ui.settings;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.administrator.readaloud.R;
+import com.example.administrator.readaloud.app.core.fragments.AppFragment;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-
-public class SettingsSectionFragment extends Fragment {
+public class SettingsSectionFragment extends AppFragment {
 
     public static final String TAG_SETTINGS_SECTION = "TAG_SETTINGS_SECTION";
 

@@ -1,4 +1,4 @@
-package com.example.administrator.readaloud.ui;
+package com.example.administrator.readaloud.app.ui;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -17,11 +17,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.readaloud.R;
-import com.example.administrator.readaloud.database.DBHandler;
-import com.example.administrator.readaloud.database.DBHelper;
-import com.example.administrator.readaloud.ui.read.ReadSectionFragment;
-import com.example.administrator.readaloud.ui.result.ResultSectionFragment;
-import com.example.administrator.readaloud.ui.settings.SettingsSectionFragment;
+import com.example.administrator.readaloud.app.core.ApplicationHandler;
+import com.example.administrator.readaloud.app.ui.read.ReadSectionFragment;
+import com.example.administrator.readaloud.app.ui.result.ResultSectionFragment;
+import com.example.administrator.readaloud.app.ui.settings.SettingsSectionFragment;
 import com.example.administrator.readaloud.utils.Constants;
 
 
@@ -146,9 +145,7 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
     }
 
     public void logOutUser() {
-        DBHelper helper = new DBHelper(getBaseContext());
-        DBHandler handler = new DBHandler(helper);
-        handler.getUserListDB().makeLogOut(userName);
+        ((ApplicationHandler) getApplication()).getHandler().getUserListDB().makeLogOut(userName);
         preferences.edit().clear().apply();
     }
 }

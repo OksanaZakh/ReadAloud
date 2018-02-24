@@ -1,5 +1,8 @@
-package com.example.administrator.readaloud.ui;
+package com.example.administrator.readaloud.app.ui;
 
+import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -8,12 +11,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.example.administrator.readaloud.R;
+import com.example.administrator.readaloud.app.core.activities.AppActivity;
 
 /**
  * Created by Administrator on 03.02.2018.
  */
 
-public class BaseToolbar extends AppCompatActivity {
+public class BaseToolbar extends AppActivity {
 
     protected ActionBarDrawerToggle drawerToggle;
 
