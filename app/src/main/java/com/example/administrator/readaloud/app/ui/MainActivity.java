@@ -1,15 +1,14 @@
-package com.example.administrator.readaloud.ui;
+package com.example.administrator.readaloud.app.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import com.example.administrator.readaloud.R;
-import com.example.administrator.readaloud.ui.welcome.WelcomeFragment;
-import com.example.administrator.readaloud.utils.Constants;
+import com.example.administrator.readaloud.app.core.ApplicationHandler;
+import com.example.administrator.readaloud.app.core.activities.AppActivity;
+import com.example.administrator.readaloud.app.ui.welcome.WelcomeFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,15 +26,5 @@ public class MainActivity extends AppCompatActivity {
                         .commit();
             }
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (Constants.back_pressed_time + Constants.PERIOD > System.currentTimeMillis()) {
-            super.onBackPressed();
-        } else {
-            Toast.makeText(getBaseContext(), R.string.base_activity_press_again_to_exit, Toast.LENGTH_SHORT).show();
-        }
-        Constants.back_pressed_time = System.currentTimeMillis();
     }
 }

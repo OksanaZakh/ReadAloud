@@ -16,4 +16,21 @@
 
     <style name="MainBackgroundStyle" parent="AppTheme"></style>
 
+    <style name="AppTheme.AppDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:colorPrimary">@color/primaryColor</item>
+        <item name="android:colorAccent">@color/colorAccent</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:listViewStyle">@style/AppListViewStyle</item>
+    </style>
+
+    <style name="AppListViewStyle" parent="Widget.AppCompat.ListView.Menu">
+        <item name="android:divider">@color/divider</item>
+        <item name="android:dividerHeight">1px</item>
+        <item name="android:footerDividersEnabled">false</item>
+    </style>
+
 </resources>

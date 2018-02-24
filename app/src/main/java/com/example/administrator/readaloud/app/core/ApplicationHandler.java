@@ -1,9 +1,10 @@
-package com.example.administrator.readaloud.ui;
+package com.example.administrator.readaloud.app.core;
 
 import android.app.Application;
+import android.content.Context;
 
-import com.example.administrator.readaloud.database.DBHandler;
-import com.example.administrator.readaloud.database.DBHelper;
+import com.example.administrator.readaloud.databaseservice.DBHandler;
+import com.example.administrator.readaloud.databaseservice.DBHelper;
 
 /**
  * Created by Administrator on 21.02.2018.
@@ -12,6 +13,10 @@ import com.example.administrator.readaloud.database.DBHelper;
 public class ApplicationHandler extends Application {
 
     private DBHandler handler;
+
+    public static ApplicationHandler getInstance(Context context) {
+        return ((ApplicationHandler) context.getApplicationContext());
+    }
 
     @Override
     public void onCreate() {
@@ -31,6 +36,10 @@ public class ApplicationHandler extends Application {
         } else {
             return false;
         }
+    }
+
+    public BeanContext createBeanContext(Context creatorContext, BeanFactory beanFactory) {
+        return new BeanContext(creatorContext, beanFactory);
     }
 }
 

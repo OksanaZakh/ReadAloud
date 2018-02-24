@@ -1,8 +1,7 @@
-package com.example.administrator.readaloud.ui.welcome;
+package com.example.administrator.readaloud.app.ui.welcome;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +9,13 @@ import android.widget.Button;
 import android.widget.GridView;
 
 import com.example.administrator.readaloud.R;
+import com.example.administrator.readaloud.app.core.fragments.AppDialogFragment;
 
 /**
  * Created by Administrator on 26.01.2018.
  */
 
-public class WelcomeUserAvatarDialogFragment extends DialogFragment implements View.OnClickListener {
+public class WelcomeUserAvatarDialogFragment extends AppDialogFragment implements View.OnClickListener {
 
     public static final String TAG_WELCOME_USER_AVATAR = "TAG_WELCOME_USER_AVATAR";
 

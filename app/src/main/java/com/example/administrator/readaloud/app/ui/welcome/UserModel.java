@@ -1,4 +1,4 @@
-package com.example.administrator.readaloud.ui.welcome;
+package com.example.administrator.readaloud.app.ui.welcome;
 
 /**
  * Created by Administrator on 06.02.2018.

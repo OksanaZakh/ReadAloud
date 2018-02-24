@@ -6,4 +6,5 @@
     <color name="secondaryLightColor">#ce93d8</color>
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#222211</color>
+    <color name="divider">#B6B6B6</color>
 </resources>

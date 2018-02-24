@@ -1,10 +1,10 @@
-package com.example.administrator.readaloud.database;
+package com.example.administrator.readaloud.databaseservice;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.administrator.readaloud.ui.welcome.UserModel;
+import com.example.administrator.readaloud.app.ui.welcome.UserModel;
 import com.example.administrator.readaloud.utils.Constants;
 
 import java.util.ArrayList;

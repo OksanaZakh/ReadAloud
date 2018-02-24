@@ -1,6 +1,6 @@
-package com.example.administrator.readaloud.database;
+package com.example.administrator.readaloud.databaseservice;
 
-import com.example.administrator.readaloud.ui.result.Result;
+import com.example.administrator.readaloud.app.ui.result.Result;
 
 import java.util.List;
 

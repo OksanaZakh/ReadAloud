@@ -1,19 +1,14 @@
-package com.example.administrator.readaloud.ui.result;
-
+package com.example.administrator.readaloud.app.ui.result;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.administrator.readaloud.R;
+import com.example.administrator.readaloud.app.core.fragments.AppFragment;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
-public class ResultSectionFragment extends Fragment {
+public class ResultSectionFragment extends AppFragment {
 
     public static final String TAG_RESULT_SECTION = "TAG_RESULT_SECTION";
 
@@ -23,6 +18,5 @@ public class ResultSectionFragment extends Fragment {
 
         return inflater.inflate(R.layout.fragment_result, container, false);
     }
-
 
 }

@@ -1,4 +1,4 @@
-package com.example.administrator.readaloud.database;
+package com.example.administrator.readaloud.databaseservice;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
