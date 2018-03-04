@@ -1,14 +1,17 @@
-package com.example.administrator.readaloud.app.ui.welcome.AvatarsCreator;
+package com.example.administrator.readaloud.api.AvatarsCreator;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.administrator.readaloud.R;
+import com.example.administrator.readaloud.utils.Constants;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -18,6 +21,7 @@ import java.util.List;
  */
 
 public class AvatarAdapter extends BaseAdapter {
+    private static final String TAG = "AvatarAdapter";
     List<Avatar> avatarList;
     Context context;
     private LayoutInflater mInflater;
@@ -44,12 +48,12 @@ public class AvatarAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         final ViewHolder vh;
         if (convertView == null) {
-            View view = mInflater.inflate(R.layout.item_avatar_img_dialog_fragm_welc_main, parent, false);
-            vh = ViewHolder.create((RelativeLayout) view);
-            view.setTag(vh);
+            convertView = mInflater.inflate(R.layout.item_avatar_img_dialog_fragm_welc_main, parent, false);
+            vh = new ViewHolder(convertView);
+            convertView.setTag(vh);
         } else {
             vh = (ViewHolder) convertView.getTag();
         }
@@ -57,24 +61,15 @@ public class AvatarAdapter extends BaseAdapter {
         Avatar item = getItem(position);
         Picasso.with(context).load(item.getMedia().getImageUrl()).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(vh.imageView);
 
-        return vh.rootView;
+        return convertView;
     }
 
     private static class ViewHolder {
-        public final RelativeLayout rootView;
         public final ImageView imageView;
 
 
-        private ViewHolder(RelativeLayout rootView, ImageView imageView) {
-            this.rootView = rootView;
-            this.imageView = imageView;
-
+        private ViewHolder(View view) {
+            imageView = view.findViewById(R.id.WelcomeUserAvatarDialogFragment_Item_imageView);
         }
-
-        public static AvatarAdapter.ViewHolder create(RelativeLayout rootView) {
-            ImageView imageView = rootView.findViewById(R.id.WelcomeUserAvatarDialogFragment_Item_imageView);
-            return new ViewHolder(rootView, imageView);
-        }
-
     }
 }

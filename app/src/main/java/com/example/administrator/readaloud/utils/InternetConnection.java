@@ -1,4 +1,4 @@
-package com.example.administrator.readaloud.app.ui.welcome.AvatarsCreator;
+package com.example.administrator.readaloud.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

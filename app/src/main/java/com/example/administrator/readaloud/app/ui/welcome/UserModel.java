@@ -9,20 +9,20 @@ public class UserModel {
     private int id;
     private String name;
     private String token;
-    private int avatarId;
+    private String avatarUrl;
 
     public UserModel() {
     }
 
-    public UserModel(int id, String name, int avatarId) {
+    public UserModel(int id, String name, String avatarUrl) {
         this.id = id;
         this.name = name;
-        this.avatarId = avatarId;
+        this.avatarUrl = avatarUrl;
     }
 
-    public UserModel(String name, int avatarId) {
+    public UserModel(String name, String avatarUrl) {
         this.name = name;
-        this.avatarId = avatarId;
+        this.avatarUrl = avatarUrl;
 
     }
 
@@ -54,12 +54,12 @@ public class UserModel {
         this.token = token;
     }
 
-    public int getAvatarId() {
-        return avatarId;
+    public String getAvatarUrl() {
+        return avatarUrl;
     }
 
-    public void setAvatarId(int avatarId) {
-        this.avatarId = avatarId;
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 
 }

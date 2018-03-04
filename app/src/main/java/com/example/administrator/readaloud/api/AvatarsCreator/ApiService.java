@@ -1,4 +1,4 @@
-package com.example.administrator.readaloud.app.ui.welcome.AvatarsCreator;
+package com.example.administrator.readaloud.api.AvatarsCreator;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
