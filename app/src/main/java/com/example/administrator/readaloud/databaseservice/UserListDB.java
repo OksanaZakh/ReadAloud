@@ -155,11 +155,11 @@ public class UserListDB implements IUserListDB {
 
     public int getIdOfLoggedUser() {
         int id = 0;
-        String selectQuery = "SELECT * FROM " + TABLE_USERS;
+        String selectQuery = "SELECT _id, token FROM " + TABLE_USERS;
         Cursor cursor = db.rawQuery(selectQuery, null);
         while (cursor.moveToNext()) {
-            if (!cursor.getString(2).equals(Constants.DEFAULT_TOKEN)) {
-                id = Integer.parseInt(cursor.getString(0));
+            if (!cursor.getString(1).equals(Constants.DEFAULT_TOKEN)) {
+                id = cursor.getInt(0);
             }
         }
         cursor.close();

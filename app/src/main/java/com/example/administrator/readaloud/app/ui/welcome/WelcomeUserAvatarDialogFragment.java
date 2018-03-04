@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,8 +28,6 @@ import com.example.administrator.readaloud.api.AvatarsCreator.AvatarsList;
 import com.example.administrator.readaloud.utils.Constants;
 import com.example.administrator.readaloud.utils.InternetConnection;
 import com.example.administrator.readaloud.api.AvatarsCreator.RetroClient;
-
-
 
 /**
  * Created by Administrator on 26.01.2018.
@@ -61,23 +58,18 @@ public class WelcomeUserAvatarDialogFragment extends AppDialogFragment implement
         });
 
         avatarList = new ArrayList<>();
-
-        if (InternetConnection.checkConnection(getActivity().getApplicationContext())) {
-
+        if (InternetConnection.checkConnection(getContext())) {
             ApiService api = RetroClient.getApiService();
-
             Call<AvatarsList> call = api.getJSON();
-
             call.enqueue(new Callback<AvatarsList>() {
+
                 @Override
                 public void onResponse(Call<AvatarsList> call, Response<AvatarsList> response) {
-
                     if (response.isSuccessful()) {
                         avatarList = response.body().getAvatars();
                         adapter = new AvatarAdapter(getContext(), avatarList);
                         avatarGridView.setAdapter(adapter);
                         avatarGridView.setOnItemClickListener(WelcomeUserAvatarDialogFragment.this);
-
                     } else {
                         Toast.makeText(getContext(), R.string.dialog_fragm_welcome_main_toast_bad_internet_connection, Toast.LENGTH_LONG).show();
                     }
@@ -88,11 +80,9 @@ public class WelcomeUserAvatarDialogFragment extends AppDialogFragment implement
                     Toast.makeText(getContext(), R.string.dialog_fragm_welcome_main_toast_bad_internet_connection, Toast.LENGTH_LONG).show();
                 }
             });
-
         } else {
             Toast.makeText(getContext(), R.string.dialog_fragm_welcome_main_toast_bad_internet_connection, Toast.LENGTH_LONG).show();
         }
-
         return rootView;
     }
 
