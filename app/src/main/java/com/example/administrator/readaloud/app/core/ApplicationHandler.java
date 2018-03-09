@@ -3,8 +3,11 @@ package com.example.administrator.readaloud.app.core;
 import android.app.Application;
 import android.content.Context;
 
+import com.crashlytics.android.Crashlytics;
 import com.example.administrator.readaloud.databaseservice.DBHandler;
 import com.example.administrator.readaloud.databaseservice.DBHelper;
+
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by Administrator on 21.02.2018.
@@ -21,6 +24,7 @@ public class ApplicationHandler extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         DBHelper helper = new DBHelper(getBaseContext());
         this.handler = new DBHandler(helper);
     }
