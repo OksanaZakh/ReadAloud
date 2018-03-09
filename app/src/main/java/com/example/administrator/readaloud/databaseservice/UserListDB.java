@@ -22,7 +22,7 @@ public class UserListDB implements IUserListDB {
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_TOKEN = "token";
-    public static final String COLUMN_AVATAR_ID = "avatar_id";
+    public static final String COLUMN_AVATAR_URL = "avatar_url";
 
     public UserListDB(SQLiteDatabase db) {
         this.db = db;
@@ -33,7 +33,7 @@ public class UserListDB implements IUserListDB {
                 + COLUMN_ID + " INTEGER PRIMARY KEY, "
                 + COLUMN_NAME + " TEXT, "
                 + COLUMN_TOKEN + " TEXT, "
-                + COLUMN_AVATAR_ID + " INTEGER"
+                + COLUMN_AVATAR_URL + " TEXT"
                 + ")";
         db.execSQL(sql);
     }
@@ -43,7 +43,7 @@ public class UserListDB implements IUserListDB {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, userModel.getName());
         values.put(COLUMN_TOKEN, userModel.getToken());
-        values.put(COLUMN_AVATAR_ID, userModel.getAvatarId());
+        values.put(COLUMN_AVATAR_URL, userModel.getAvatarUrl());
         db.insert(TABLE_USERS, null, values);
     }
 
@@ -77,7 +77,7 @@ public class UserListDB implements IUserListDB {
             userModel.setId(Integer.parseInt(cursor.getString(0)));
             userModel.setName(cursor.getString(1));
             userModel.setToken(cursor.getString(2));
-            userModel.setAvatarId(Integer.parseInt(cursor.getString(3)));
+            userModel.setAvatarUrl(cursor.getString(3));
             userModelList.add(userModel);
         }
         cursor.close();
@@ -99,7 +99,7 @@ public class UserListDB implements IUserListDB {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, userModel.getName());
         values.put(COLUMN_TOKEN, userModel.getToken());
-        values.put(COLUMN_AVATAR_ID, userModel.getAvatarId());
+        values.put(COLUMN_AVATAR_URL, userModel.getAvatarUrl());
         return db.update(TABLE_USERS, values, COLUMN_ID + "=" + id, null);
     }
 
@@ -119,7 +119,7 @@ public class UserListDB implements IUserListDB {
                 user.setId(Integer.parseInt(cursor.getString(0)));
                 user.setName(name);
                 user.setToken(cursor.getString(2));
-                user.setAvatarId(Integer.parseInt(cursor.getString(3)));
+                user.setAvatarUrl(cursor.getString(3));
                 cursor.close();
                 return user;
             }
@@ -135,18 +135,19 @@ public class UserListDB implements IUserListDB {
     }
 
     @Override
-    public void makeLogIn(String name, int avatarId) {
+    public void makeLogIn(String name, String avatarUrl) {
         UUID tokenUuid = UUID.randomUUID();
         String token = tokenUuid.toString();
         if (!isUserInBase(name)) {
             UserModel user = new UserModel();
             user.setName(name);
             user.setToken(token);
-            user.setAvatarId(avatarId);
+            user.setAvatarUrl(avatarUrl);
             addUser(user);
         } else {
             UserModel user = getUser(name);
             user.setToken(token);
+            user.setAvatarUrl(avatarUrl);
             updateUser(user.getId(), user);
         }
 
@@ -154,14 +155,15 @@ public class UserListDB implements IUserListDB {
 
     public int getIdOfLoggedUser() {
         int id = 0;
-        String selectQuery = "SELECT * FROM " + TABLE_USERS;
+        String selectQuery = "SELECT _id, token FROM " + TABLE_USERS;
         Cursor cursor = db.rawQuery(selectQuery, null);
         while (cursor.moveToNext()) {
-            if (!cursor.getString(2).equals(Constants.DEFAULT_TOKEN)) {
-                id = Integer.parseInt(cursor.getString(0));
+            if (!cursor.getString(1).equals(Constants.DEFAULT_TOKEN)) {
+                id = cursor.getInt(0);
             }
         }
         cursor.close();
         return id;
     }
+
 }

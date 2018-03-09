@@ -5,7 +5,18 @@
 
     <GridView
         android:id="@+id/WelcomeUserAvatarDialogFragment_avaGridView"
-        style="@style/DialogFragmGridViewDimens" />
+        style="@style/DialogFragmGridViewDimens"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnWidth="90dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp"
+        android:layout_above="@id/WelcomeUserAvatarDialogFragment_cancelButton"
+        android:padding="16dp" />
+
 
     <Button
         android:id="@+id/WelcomeUserAvatarDialogFragment_cancelButton"
