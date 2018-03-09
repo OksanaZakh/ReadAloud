@@ -19,6 +19,7 @@ import com.example.administrator.readaloud.app.core.fragments.AppFragment;
 import com.example.administrator.readaloud.app.ui.BaseActivity;
 import com.example.administrator.readaloud.app.core.ApplicationHandler;
 import com.example.administrator.readaloud.utils.Constants;
+import com.squareup.picasso.Picasso;
 
 
 public class WelcomeFragment extends AppFragment implements View.OnClickListener, View.OnKeyListener {
@@ -29,7 +30,7 @@ public class WelcomeFragment extends AppFragment implements View.OnClickListener
     private Button startReadButton;
     private EditText userName;
     private String name;
-    private int avatarId;
+    private String avatarUrl;
     SharedPreferences preferences;
 
     @Override
@@ -42,11 +43,17 @@ public class WelcomeFragment extends AppFragment implements View.OnClickListener
         avaButton.setOnClickListener(this);
         startReadButton.setOnClickListener(this);
         userName.setOnKeyListener(this);
-
         preferences = getContext().getSharedPreferences(Constants.APP_PREFERENCES, Context.MODE_PRIVATE);
+
+        String imageUrl = preferences.getString(Constants.APP_PREFERENCES_AVATAR, "");
+        if (!imageUrl.equals("")) {
+            Picasso.with(getContext()).load(imageUrl).placeholder(R.drawable.ic_account_circle_black_24px)
+                    .error(R.drawable.ic_account_circle_black_24px).into(avaButton);
+        }
 
         return rootView;
     }
+
 
     @Override
     public void onClick(View view) {
@@ -54,6 +61,7 @@ public class WelcomeFragment extends AppFragment implements View.OnClickListener
             case R.id.WelcomeFragment_avaImgButton:
                 WelcomeUserAvatarDialogFragment avatarDialogFragment = new WelcomeUserAvatarDialogFragment();
                 avatarDialogFragment.show(getFragmentManager(), WelcomeUserAvatarDialogFragment.TAG_WELCOME_USER_AVATAR);
+                getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
                 break;
             case R.id.WelcomeFragment_goToReadSectionButton:
                 startReadSectionActivity();
@@ -84,9 +92,8 @@ public class WelcomeFragment extends AppFragment implements View.OnClickListener
     public void logInUser() {
         name = userName.getText().toString().trim();
         preferences.edit().putString(Constants.APP_PREFERENCES_USER, name).apply();
-        // avatarId identification will be here
-        avatarId = 0;
-        ((ApplicationHandler) getActivity().getApplication()).getHandler().getUserListDB().makeLogIn(name, avatarId);
+        avatarUrl = "" + preferences.getString(Constants.APP_PREFERENCES_AVATAR, "");
+        ((ApplicationHandler) getActivity().getApplication()).getHandler().getUserListDB().makeLogIn(name, avatarUrl);
     }
 
 }
