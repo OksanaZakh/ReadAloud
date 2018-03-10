@@ -1,4 +1,4 @@
-package com.example.administrator.readaloud.api.AvatarsCreator;
+package com.example.administrator.readaloud.api.AvatarCreator;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

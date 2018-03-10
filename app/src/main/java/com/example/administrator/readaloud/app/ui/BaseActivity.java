@@ -118,7 +118,7 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
 
                     public void onClick(DialogInterface dialog, int whichButton) {
                         logOutUser();
-                        Intent welcomeIntent = new Intent(getBaseContext(), MainActivity.class);
+                        Intent welcomeIntent = new Intent(getBaseContext(), WelcomeActivity.class);
                         finish();
                         startActivity(welcomeIntent);
                     }
