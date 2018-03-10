@@ -35,11 +35,7 @@ public class ApplicationHandler extends Application {
 
     public boolean isUserLogged() {
         int id = this.handler.getUserListDB().getIdOfLoggedUser();
-        if (id != 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return id != 0;
     }
 
     public BeanContext createBeanContext(Context creatorContext, BeanFactory beanFactory) {
