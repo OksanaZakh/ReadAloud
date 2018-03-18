@@ -116,7 +116,7 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
     private void startReading() {
         speech.setRecognitionListener(this);
         speechStarted = true;
-        MuteAudio.MuteAudio(getContext());
+        MuteAudio.muteAudio(getContext());
         speech.startListening(recognizerIntent);
     }
 
@@ -124,7 +124,7 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
         speechStarted = false;
         speech.stopListening();
         speech.destroy();
-        MuteAudio.UnMuteAudio(getContext());
+        MuteAudio.unMuteAudio(getContext());
         readTextView.setText(speechString);
     }
 
