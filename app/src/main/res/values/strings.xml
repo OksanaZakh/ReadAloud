@@ -22,4 +22,6 @@
     <string name="menu_navigation_item_feedback">Залишити відгук</string>
     <string name="menu_navigation_item_title">Додатково</string>
     <string name="dialog_fragm_welcome_main_toast_bad_internet_connection">Відсутній інтернет зв\'язок або погане з\'єднення</string>
+    <string name="read_section_fragment_audio_permission_request">Додатку еобхідний дозвіл на використання мікрофону</string>
+    <string name="read_section_fragment_audio_permission_not_provided">Додаток не може працювати без дозволу на використання мікрофону</string>
 </resources>
