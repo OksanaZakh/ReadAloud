@@ -1,17 +1,13 @@
-package com.example.administrator.readaloud.api.AvatarsCreator;
+package com.example.administrator.readaloud.api.AvatarCreator;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.administrator.readaloud.R;
-import com.example.administrator.readaloud.utils.Constants;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
