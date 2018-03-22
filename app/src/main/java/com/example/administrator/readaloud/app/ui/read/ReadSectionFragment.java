@@ -20,11 +20,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.readaloud.R;
+import com.example.administrator.readaloud.api.ReadHandler.SeekBarHandler;
 import com.example.administrator.readaloud.app.core.fragments.AppFragment;
 import com.example.administrator.readaloud.utils.Constants;
 import com.example.administrator.readaloud.utils.MuteAudio;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 /**
  * Created by Administrator on 23.01.2018.
@@ -41,17 +45,24 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
     private SpeechRecognizer speech = null;
     private Intent recognizerIntent;
     boolean speechStarted = false;
+    private SeekBarHandler seekBarHandler;
+    private int progressValue;
+    private Timer timer;
+    private ReadingTimerTask readingTimerTask;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View viewRoot = inflater.inflate(R.layout.fragment_read_section_main, container, false);
         readTextView = viewRoot.findViewById(R.id.ReadSectionFragment_ReadingTextView);
+        progressValue = 0;
+
         timeSeekBar = viewRoot.findViewById(R.id.ReadSectionFragment_TimeSeekBar);
+        seekBarHandler = new SeekBarHandler(getActivity(), timeSeekBar);
+
         startReadButton = viewRoot.findViewById(R.id.ReadSectionFragment_ButtonStart);
         restartReadButton = viewRoot.findViewById(R.id.ReadSectionFragment_ButtonRestart);
         pauseReadButton = viewRoot.findViewById(R.id.ReadSectionFragment_ButtonPause);
-
         pauseReadButton.setOnClickListener(this);
         startReadButton.setOnClickListener(this);
         restartReadButton.setOnClickListener(this);
@@ -62,6 +73,13 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
 
         initialiseRecognitionIntent();
 
+        checkAudioPermission();
+
+        return viewRoot;
+    }
+
+
+    private void checkAudioPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.RECORD_AUDIO) ==
                     PackageManager.PERMISSION_GRANTED) {
@@ -73,8 +91,8 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
                 }, Constants.REQUEST_RECORD_PERMISSION);
             }
         }
-        return viewRoot;
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -102,16 +120,28 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
         switch (view.getId()) {
             case R.id.ReadSectionFragment_ButtonStart:
                 startReading();
+                timer = new Timer();
+                readingTimerTask = new ReadingTimerTask();
+                timer.schedule(readingTimerTask, 60000);
+                seekBarHandler.runSeekBar();
                 break;
             case R.id.ReadSectionFragment_ButtonPause:
+                timer.cancel();
                 stopReading();
+                seekBarHandler.pauseSeekBar();
                 break;
             case R.id.ReadSectionFragment_ButtonRestart:
+                timer.cancel();
                 restartReading();
+                timer = new Timer();
+                readingTimerTask = new ReadingTimerTask();
+                timer.schedule(readingTimerTask, 60000);
+                seekBarHandler.restartSeekBar();
                 break;
 
         }
     }
+
 
     private void startReading() {
         speech.setRecognitionListener(this);
@@ -191,5 +221,19 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
     @Override
     public void onRmsChanged(float rmsdB) {
         Log.i(TAG, "onRmsChanged: " + rmsdB);
+    }
+
+
+    private class ReadingTimerTask extends TimerTask {
+        @Override
+        public void run() {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    stopReading();
+                }
+            });
+
+        }
     }
 }
