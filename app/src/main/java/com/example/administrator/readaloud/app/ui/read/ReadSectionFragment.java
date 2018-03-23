@@ -44,9 +44,8 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
     private String speechString;
     private SpeechRecognizer speech = null;
     private Intent recognizerIntent;
-    boolean speechStarted = false;
+    private boolean speechStarted = false;
     private SeekBarHandler seekBarHandler;
-    private int progressValue;
     private Timer timer;
     private ReadingTimerTask readingTimerTask;
 
@@ -55,7 +54,6 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View viewRoot = inflater.inflate(R.layout.fragment_read_section_main, container, false);
         readTextView = viewRoot.findViewById(R.id.ReadSectionFragment_ReadingTextView);
-        progressValue = 0;
 
         timeSeekBar = viewRoot.findViewById(R.id.ReadSectionFragment_TimeSeekBar);
         seekBarHandler = new SeekBarHandler(getActivity(), timeSeekBar);
@@ -72,9 +70,7 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
         speech.setRecognitionListener(this);
 
         initialiseRecognitionIntent();
-
         checkAudioPermission();
-
         return viewRoot;
     }
 
@@ -108,7 +104,7 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
 
     private void initialiseRecognitionIntent() {
         recognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        recognizerIntent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, new Long(30000));
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 10000);
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, getContext().getPackageName());
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_WEB_SEARCH);
@@ -138,7 +134,6 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
                 timer.schedule(readingTimerTask, 60000);
                 seekBarHandler.restartSeekBar();
                 break;
-
         }
     }
 
@@ -233,7 +228,6 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
                     stopReading();
                 }
             });
-
         }
     }
 }
