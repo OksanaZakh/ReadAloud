@@ -31,8 +31,7 @@ public class SeekBarHandler {
     public void restartSeekBar() {
         thread.interrupt();
         progressValue = 0;
-        thread = createTimeSeekBarThread();
-        thread.start();
+        seekBar.setProgress(progressValue);
     }
 
     private Thread createTimeSeekBarThread() {
