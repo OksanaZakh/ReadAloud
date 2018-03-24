@@ -7,12 +7,7 @@
 
     <SeekBar
         android:id="@+id/ReadSectionFragment_TimeSeekBar"
-        style="@style/MainSeekBarDimens"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/ReadSectionFragment_ReadingTextView"
-        android:layout_marginTop="@dimen/layout_padding_top" />
+        style="@style/MainSeekBarDimens" />
 
     <TextView
         android:id="@+id/ReadSectionFragment_ReadingTextView"
