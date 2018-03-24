@@ -19,6 +19,12 @@
 
     <style name="MainSeekBarDimens" parent="AppTheme">
         <item name="android:layout_margin">16dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignStart">@+id/ReadSectionFragment_ReadingTextView</item>
+        <item name="android:layout_marginTop">@dimen/layout_padding_top</item>
+        <item name="android:max">480</item>
     </style>
 
     <style name="CancelButtonInDialogFragmentDimens" parent="AppTheme">
