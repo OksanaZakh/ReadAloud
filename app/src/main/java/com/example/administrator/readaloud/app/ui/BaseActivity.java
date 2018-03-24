@@ -45,7 +45,7 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
         if (savedInstanceState == null) {
             ReadSectionFragment fragment = new ReadSectionFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.base_fragment_container, fragment, ReadSectionFragment.TAG_READ_SECTION)
+                    .add(R.id.base_fragment_container, fragment)
                     .commit();
         }
 
@@ -118,7 +118,7 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
 
                     public void onClick(DialogInterface dialog, int whichButton) {
                         logOutUser();
-                        Intent welcomeIntent = new Intent(getBaseContext(), MainActivity.class);
+                        Intent welcomeIntent = new Intent(getBaseContext(), WelcomeActivity.class);
                         finish();
                         startActivity(welcomeIntent);
                     }
@@ -139,7 +139,7 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
     public void startReadSectionFragment() {
         ReadSectionFragment fragment = new ReadSectionFragment();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.base_fragment_container, fragment, ReadSectionFragment.TAG_READ_SECTION)
+                .replace(R.id.base_fragment_container, fragment)
                 .commit();
         getSupportActionBar().setTitle(R.string.general_start_reading);
     }
@@ -148,4 +148,6 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
         ((ApplicationHandler) getApplication()).getHandler().getUserListDB().makeLogOut(userName);
         preferences.edit().clear().apply();
     }
+
+
 }
