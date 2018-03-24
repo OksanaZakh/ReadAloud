@@ -7,12 +7,7 @@
 
     <SeekBar
         android:id="@+id/ReadSectionFragment_TimeSeekBar"
-        style="@style/MainSeekBarDimens"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/ReadSectionFragment_ReadingTextView"
-        android:layout_marginTop="@dimen/layout_padding_top" />
+        style="@style/MainSeekBarDimens" />
 
     <TextView
         android:id="@+id/ReadSectionFragment_ReadingTextView"
@@ -39,11 +34,6 @@
             android:id="@+id/ReadSectionFragment_ButtonStart"
             style="@style/MainButtonDimens"
             app:srcCompat="@drawable/ic_play_arrow_black_24px" />
-
-        <ImageButton
-            android:id="@+id/ReadSectionFragment_ButtonPause"
-            style="@style/MainButtonDimens"
-            app:srcCompat="@drawable/ic_pause_black_24px" />
 
         <ImageButton
             android:id="@+id/ReadSectionFragment_ButtonRestart"
