@@ -21,13 +21,13 @@ import retrofit2.Response;
 
 import com.example.administrator.readaloud.R;
 import com.example.administrator.readaloud.app.core.fragments.AppDialogFragment;
-import com.example.administrator.readaloud.api.AvatarsCreator.ApiService;
-import com.example.administrator.readaloud.api.AvatarsCreator.Avatar;
-import com.example.administrator.readaloud.api.AvatarsCreator.AvatarAdapter;
-import com.example.administrator.readaloud.api.AvatarsCreator.AvatarsList;
+import com.example.administrator.readaloud.api.AvatarCreator.ApiService;
+import com.example.administrator.readaloud.api.AvatarCreator.Avatar;
+import com.example.administrator.readaloud.api.AvatarCreator.AvatarAdapter;
+import com.example.administrator.readaloud.api.AvatarCreator.AvatarsList;
 import com.example.administrator.readaloud.utils.Constants;
 import com.example.administrator.readaloud.utils.InternetConnection;
-import com.example.administrator.readaloud.api.AvatarsCreator.RetroClient;
+import com.example.administrator.readaloud.api.AvatarCreator.RetroClient;
 
 /**
  * Created by Administrator on 26.01.2018.

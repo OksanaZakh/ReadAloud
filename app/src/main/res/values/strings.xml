@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Read Aloud</string>
+    <string name="app_name">Скорочитання</string>
     <string name="open">open</string>
     <string name="close">close</string>
     <string name="general_start_reading">Почати читати</string>
@@ -22,4 +22,18 @@
     <string name="menu_navigation_item_feedback">Залишити відгук</string>
     <string name="menu_navigation_item_title">Додатково</string>
     <string name="dialog_fragm_welcome_main_toast_bad_internet_connection">Відсутній інтернет зв\'язок або погане з\'єднення</string>
+    <string name="read_section_fragment_audio_permission_request">Додатку еобхідний дозвіл на використання мікрофону</string>
+    <string name="read_section_fragment_audio_permission_not_provided">Додаток не може працювати без дозволу на використання мікрофону</string>
+    <string name="toolbar_info_fragment">Привіт, друже!</string>
+    <string name="toolbar_button_info_ok">OK</string>
+    <string name="toolbar_info_1">Привіт мій друже!</string>
+    <string name="toolbar_info_2">Для роботи додатку необхідне</string>
+    <string name="toolbar_info_3">хороше інтернет-з\'єднання.</string>
+    <string name="toolbar_info_4">Читай в тиші, слова старайся</string>
+    <string name="toolbar_info_5">вимовляти чітко.</string>
+    <string name="toolbar_info_6">Для початку читання в розділі</string>
+    <string name="toolbar_info_7">ПОЧАТИ ЧИТАТИ натисни СТАРТ.</string>
+    <string name="toolbar_info_8">Щоб зупинити - ПАУЗУ.</string>
+    <string name="toolbar_info_9">Для того, щоб розпочати читати</string>
+    <string name="toolbar_info_10">зову - ПЕРЕЗАПУСК.</string>
 </resources>
