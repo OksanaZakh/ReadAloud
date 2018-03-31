@@ -46,7 +46,7 @@ public class WelcomeFragment extends AppFragment implements View.OnClickListener
         preferences = getContext().getSharedPreferences(Constants.APP_PREFERENCES, Context.MODE_PRIVATE);
 
         String imageUrl = preferences.getString(Constants.APP_PREFERENCES_AVATAR, "");
-        if (!imageUrl.equals("")) {
+        if (!imageUrl.isEmpty()) {
             Picasso.with(getContext()).load(imageUrl).placeholder(R.drawable.ic_account_circle_black_24px)
                     .error(R.drawable.ic_account_circle_black_24px).into(avaButton);
         }
@@ -61,7 +61,7 @@ public class WelcomeFragment extends AppFragment implements View.OnClickListener
             case R.id.WelcomeFragment_avaImgButton:
                 WelcomeUserAvatarDialogFragment avatarDialogFragment = new WelcomeUserAvatarDialogFragment();
                 avatarDialogFragment.show(getFragmentManager(), WelcomeUserAvatarDialogFragment.TAG_WELCOME_USER_AVATAR);
-                getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
+                //getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
                 break;
             case R.id.WelcomeFragment_goToReadSectionButton:
                 startReadSectionActivity();
