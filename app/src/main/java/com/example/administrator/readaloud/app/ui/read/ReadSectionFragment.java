@@ -51,29 +51,25 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View viewRoot = inflater.inflate(R.layout.fragment_read_section_main, container, false);
         readTextView = viewRoot.findViewById(R.id.ReadSectionFragment_ReadingTextView);
-
         timeSeekBar = viewRoot.findViewById(R.id.ReadSectionFragment_TimeSeekBar);
-        seekBarHandler = new SeekBarHandler(getActivity(), timeSeekBar);
-
         startReadButton = viewRoot.findViewById(R.id.ReadSectionFragment_ButtonStart);
         restartReadButton = viewRoot.findViewById(R.id.ReadSectionFragment_ButtonRestart);
+        seekBarHandler = new SeekBarHandler(getActivity(), timeSeekBar);
         startReadButton.setOnClickListener(this);
         restartReadButton.setOnClickListener(this);
-
         speechString = "";
         speech = SpeechRecognizer.createSpeechRecognizer(getContext());
         speech.setRecognitionListener(this);
-
         initialiseRecognitionIntent();
         checkAudioPermission();
         return viewRoot;
     }
 
-
     private void checkAudioPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.RECORD_AUDIO) ==
                     PackageManager.PERMISSION_GRANTED) {
+                //TODO empty body
             } else {
                 if (shouldShowRequestPermissionRationale(Manifest.permission.RECORD_AUDIO)) {
                     Toast.makeText(getContext(), R.string.read_section_fragment_audio_permission_request, Toast.LENGTH_SHORT).show();
@@ -84,11 +80,9 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
         }
     }
 
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
         if (requestCode == Constants.REQUEST_AUDIO_PERMISSION_RESULT) {
             if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(getContext(),

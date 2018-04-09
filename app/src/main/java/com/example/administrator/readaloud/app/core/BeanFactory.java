@@ -1,5 +1,7 @@
 package com.example.administrator.readaloud.app.core;
 
+import android.content.Context;
+
 import com.example.administrator.readaloud.businessservice.BusinessService;
 import com.example.administrator.readaloud.businessservice.BusinessServiceBase;
 
@@ -9,8 +11,8 @@ import com.example.administrator.readaloud.businessservice.BusinessServiceBase;
 
 public class BeanFactory {
 
-    protected BusinessService createBusinessService(BeanContext beanContext) {
-        return new BusinessServiceBase(beanContext);
+    protected BusinessService createBusinessService(Context context) {
+        return new BusinessServiceBase(context);
     }
 
 }

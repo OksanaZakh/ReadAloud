@@ -104,7 +104,7 @@ public class WelcomeUserAvatarDialogFragment extends AppDialogFragment implement
 
     private void startWelcomeFragment() {
         getActivity().getSupportFragmentManager().beginTransaction()
-                .add(R.id.main_fragment_container, new WelcomeFragment())
+                .replace(R.id.main_fragment_container, new WelcomeFragment())
                 .commit();
     }
 }
