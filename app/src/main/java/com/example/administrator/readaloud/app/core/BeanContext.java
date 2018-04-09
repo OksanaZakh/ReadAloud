@@ -38,7 +38,7 @@ public class BeanContext {
 
     public BusinessService getBusinessService() {
         if (businessService == null) {
-            businessService = factory.createBusinessService(this);
+            businessService = factory.createBusinessService(context);
         }
         return businessService;
     }

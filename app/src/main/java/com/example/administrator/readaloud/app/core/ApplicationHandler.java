@@ -27,6 +27,8 @@ public class ApplicationHandler extends Application {
         Fabric.with(this, new Crashlytics());
         DBHelper helper = new DBHelper(getBaseContext());
         this.handler = new DBHandler(helper);
+        BeanContext beanContext = BeanContext.getInstance(this);
+        beanContext.close();
     }
 
     public DBHandler getHandler() {
@@ -35,11 +37,7 @@ public class ApplicationHandler extends Application {
 
     public boolean isUserLogged() {
         int id = this.handler.getUserListDB().getIdOfLoggedUser();
-        if (id != 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return id != 0;
     }
 
     public BeanContext createBeanContext(Context creatorContext, BeanFactory beanFactory) {

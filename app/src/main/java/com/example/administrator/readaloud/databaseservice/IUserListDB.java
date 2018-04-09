@@ -24,7 +24,5 @@ public interface IUserListDB {
 
     UserModel getUser(String name);
 
-    void makeLogIn(String name, String avatarUrl);
-
     void makeLogOut(String name);
 }

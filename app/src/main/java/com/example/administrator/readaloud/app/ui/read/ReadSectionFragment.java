@@ -20,11 +20,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.readaloud.R;
+import com.example.administrator.readaloud.api.ReadHandler.SeekBarHandler;
 import com.example.administrator.readaloud.app.core.fragments.AppFragment;
 import com.example.administrator.readaloud.utils.Constants;
 import com.example.administrator.readaloud.utils.MuteAudio;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Administrator on 23.01.2018.
@@ -36,12 +39,13 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
     private SeekBar timeSeekBar;
     private ImageButton startReadButton;
     private ImageButton restartReadButton;
-    private ImageButton pauseReadButton;
     private String speechString;
     private SpeechRecognizer speech = null;
     private Intent recognizerIntent;
-    boolean speechStarted = false;
-
+    private boolean speechStarted = false;
+    private SeekBarHandler seekBarHandler;
+    private Timer timer;
+    private ReadingTimerTask readingTimerTask;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,21 +54,22 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
         timeSeekBar = viewRoot.findViewById(R.id.ReadSectionFragment_TimeSeekBar);
         startReadButton = viewRoot.findViewById(R.id.ReadSectionFragment_ButtonStart);
         restartReadButton = viewRoot.findViewById(R.id.ReadSectionFragment_ButtonRestart);
-        pauseReadButton = viewRoot.findViewById(R.id.ReadSectionFragment_ButtonPause);
-
-        pauseReadButton.setOnClickListener(this);
+        seekBarHandler = new SeekBarHandler(getActivity(), timeSeekBar);
         startReadButton.setOnClickListener(this);
         restartReadButton.setOnClickListener(this);
-
         speechString = "";
         speech = SpeechRecognizer.createSpeechRecognizer(getContext());
         speech.setRecognitionListener(this);
-
         initialiseRecognitionIntent();
+        checkAudioPermission();
+        return viewRoot;
+    }
 
+    private void checkAudioPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.RECORD_AUDIO) ==
                     PackageManager.PERMISSION_GRANTED) {
+                //TODO empty body
             } else {
                 if (shouldShowRequestPermissionRationale(Manifest.permission.RECORD_AUDIO)) {
                     Toast.makeText(getContext(), R.string.read_section_fragment_audio_permission_request, Toast.LENGTH_SHORT).show();
@@ -73,13 +78,11 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
                 }, Constants.REQUEST_RECORD_PERMISSION);
             }
         }
-        return viewRoot;
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
         if (requestCode == Constants.REQUEST_AUDIO_PERMISSION_RESULT) {
             if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(getContext(),
@@ -90,7 +93,7 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
 
     private void initialiseRecognitionIntent() {
         recognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        recognizerIntent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, new Long(30000));
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 60000);
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, getContext().getPackageName());
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_WEB_SEARCH);
@@ -101,42 +104,54 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ReadSectionFragment_ButtonStart:
-                startReading();
-                break;
-            case R.id.ReadSectionFragment_ButtonPause:
-                stopReading();
-                break;
+                if (!speechStarted) {
+                    startReading();
+                    break;
+                } else {
+                    stopReading();
+                    break;
+                }
             case R.id.ReadSectionFragment_ButtonRestart:
                 restartReading();
                 break;
-
         }
     }
 
     private void startReading() {
+        startReadButton.setImageResource(R.drawable.ic_pause_black_24px);
         speech.setRecognitionListener(this);
         speechStarted = true;
         MuteAudio.muteAudio(getContext());
         speech.startListening(recognizerIntent);
+        timer = new Timer();
+        readingTimerTask = new ReadingTimerTask();
+        timer.schedule(readingTimerTask, 60000);
+        seekBarHandler.runSeekBar();
     }
 
     private void stopReading() {
+        if (timer != null) {
+            timer.cancel();
+        }
+        startReadButton.setImageResource(R.drawable.ic_play_arrow_black_24px);
         speechStarted = false;
         speech.stopListening();
         speech.destroy();
         MuteAudio.unMuteAudio(getContext());
         readTextView.setText(speechString);
+        seekBarHandler.pauseSeekBar();
     }
 
     private void restartReading() {
-        if (speechStarted) {
-            speechString = "";
-            readTextView.setText("");
-            stopReading();
-            startReading();
-        } else {
-            startReading();
+        if (timer != null) {
+            timer.cancel();
         }
+        if (speechStarted) {
+            stopReading();
+        }
+        speechString = "";
+        readTextView.setText("");
+        seekBarHandler.restartSeekBar();
     }
 
     @Override
@@ -146,7 +161,7 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
 
     @Override
     public void onBufferReceived(byte[] buffer) {
-        Log.i(TAG, "onBufferReceived: " + buffer);
+        Log.i(TAG, "onBufferReceived:");
     }
 
     @Override
@@ -191,5 +206,17 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
     @Override
     public void onRmsChanged(float rmsdB) {
         Log.i(TAG, "onRmsChanged: " + rmsdB);
+    }
+
+    private class ReadingTimerTask extends TimerTask {
+        @Override
+        public void run() {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    stopReading();
+                }
+            });
+        }
     }
 }

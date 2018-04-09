@@ -4,15 +4,21 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,12 +36,13 @@ import com.example.administrator.readaloud.utils.Constants;
 
 public class BaseActivity extends BaseToolbar implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
+    private static final String TAG = "BaseActivity";
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private String userName;
     private SharedPreferences preferences;
-    public TextView navigationHeaderTextView;
+    private TextView navigationHeaderTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,19 +56,28 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
                     .commit();
         }
 
-
         toolbar = findViewById(R.id.toolbar_main);
         drawerLayout = findViewById(R.id.base_activity_drawer_layout);
         navigationView = findViewById(R.id.base_navigationView);
 
         setupToolbar(drawerLayout, toolbar);
+
         navigationView.setNavigationItemSelectedListener(this);
+
+        Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_info_outline_black_24px);
+        toolbar.setOverflowIcon(drawable);
 
         preferences = getSharedPreferences(Constants.APP_PREFERENCES, Context.MODE_PRIVATE);
         userName = preferences.getString(Constants.APP_PREFERENCES_USER, "");
 
         navigationHeaderTextView = navigationView.getHeaderView(0).findViewById(R.id.navigation_header_main_textView_userName);
         navigationHeaderTextView.setText(userName);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_info, menu);
+        return true;
     }
 
     @Override
@@ -77,7 +93,6 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
                         .replace(R.id.base_fragment_container, fragment, ResultSectionFragment.TAG_RESULT_SECTION)
                         .commit();
                 getSupportActionBar().setTitle(R.string.general_results);
-
                 break;
             case R.id.menu_settingsItem:
                 fragment = new SettingsSectionFragment();
@@ -148,6 +163,5 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
         ((ApplicationHandler) getApplication()).getHandler().getUserListDB().makeLogOut(userName);
         preferences.edit().clear().apply();
     }
-
 
 }
