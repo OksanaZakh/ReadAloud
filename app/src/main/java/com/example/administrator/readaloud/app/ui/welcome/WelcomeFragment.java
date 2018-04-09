@@ -17,7 +17,6 @@ import android.widget.Toast;
 import com.example.administrator.readaloud.R;
 import com.example.administrator.readaloud.app.core.fragments.AppFragment;
 import com.example.administrator.readaloud.app.ui.BaseActivity;
-import com.example.administrator.readaloud.app.core.ApplicationHandler;
 import com.example.administrator.readaloud.utils.Constants;
 import com.squareup.picasso.Picasso;
 
@@ -29,8 +28,6 @@ public class WelcomeFragment extends AppFragment implements View.OnClickListener
     private ImageButton avaButton;
     private Button startReadButton;
     private EditText userName;
-    private String name;
-    private String avatarUrl;
     SharedPreferences preferences;
 
     @Override
@@ -44,16 +41,13 @@ public class WelcomeFragment extends AppFragment implements View.OnClickListener
         startReadButton.setOnClickListener(this);
         userName.setOnKeyListener(this);
         preferences = getContext().getSharedPreferences(Constants.APP_PREFERENCES, Context.MODE_PRIVATE);
-
         String imageUrl = preferences.getString(Constants.APP_PREFERENCES_AVATAR, "");
         if (!imageUrl.isEmpty()) {
             Picasso.with(getContext()).load(imageUrl).placeholder(R.drawable.ic_account_circle_black_24px)
                     .error(R.drawable.ic_account_circle_black_24px).into(avaButton);
         }
-
         return rootView;
     }
-
 
     @Override
     public void onClick(View view) {
@@ -90,10 +84,10 @@ public class WelcomeFragment extends AppFragment implements View.OnClickListener
     }
 
     public void logInUser() {
-        name = userName.getText().toString().trim();
+        String name = userName.getText().toString().trim();
         preferences.edit().putString(Constants.APP_PREFERENCES_USER, name).apply();
-        avatarUrl = "" + preferences.getString(Constants.APP_PREFERENCES_AVATAR, "");
-        ((ApplicationHandler) getActivity().getApplication()).getHandler().getUserListDB().makeLogIn(name, avatarUrl);
+        String avatarUrl = "" + preferences.getString(Constants.APP_PREFERENCES_AVATAR, "");
+        getBusinessService().makeLogin(name, avatarUrl);
     }
 
 }

@@ -134,25 +134,6 @@ public class UserListDB implements IUserListDB {
         updateUser(user.getId(), user);
     }
 
-    @Override
-    public void makeLogIn(String name, String avatarUrl) {
-        UUID tokenUuid = UUID.randomUUID();
-        String token = tokenUuid.toString();
-        if (!isUserInBase(name)) {
-            UserModel user = new UserModel();
-            user.setName(name);
-            user.setToken(token);
-            user.setAvatarUrl(avatarUrl);
-            addUser(user);
-        } else {
-            UserModel user = getUser(name);
-            user.setToken(token);
-            user.setAvatarUrl(avatarUrl);
-            updateUser(user.getId(), user);
-        }
-
-    }
-
     public int getIdOfLoggedUser() {
         int id = 0;
         String selectQuery = "SELECT _id, token FROM " + TABLE_USERS;

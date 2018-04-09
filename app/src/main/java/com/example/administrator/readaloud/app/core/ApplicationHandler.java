@@ -27,6 +27,8 @@ public class ApplicationHandler extends Application {
         Fabric.with(this, new Crashlytics());
         DBHelper helper = new DBHelper(getBaseContext());
         this.handler = new DBHandler(helper);
+        BeanContext beanContext = BeanContext.getInstance(this);
+        beanContext.close();
     }
 
     public DBHandler getHandler() {

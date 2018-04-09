@@ -13,4 +13,6 @@ public interface BusinessService {
 
     UserModel getMyUser(Context context, DBHelper helper, String name);
 
+    void makeLogin(String name, String avatarUrl);
+
 }
