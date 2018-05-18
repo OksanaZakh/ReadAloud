@@ -4,26 +4,22 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.readaloud.R;
 import com.example.administrator.readaloud.app.core.ApplicationHandler;
+import com.example.administrator.readaloud.app.ui.info.InfoDialogFragment;
 import com.example.administrator.readaloud.app.ui.read.ReadSectionFragment;
 import com.example.administrator.readaloud.app.ui.result.ResultSectionFragment;
 import com.example.administrator.readaloud.app.ui.settings.SettingsSectionFragment;
@@ -43,6 +39,7 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
     private String userName;
     private SharedPreferences preferences;
     private TextView navigationHeaderTextView;
+    private ImageButton infoImageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,62 +49,61 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
         if (savedInstanceState == null) {
             ReadSectionFragment fragment = new ReadSectionFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.base_fragment_container, fragment)
+                    .add(R.id.BaseActivity_Fragment_Container, fragment)
                     .commit();
         }
 
-        toolbar = findViewById(R.id.toolbar_main);
-        drawerLayout = findViewById(R.id.base_activity_drawer_layout);
-        navigationView = findViewById(R.id.base_navigationView);
+        toolbar = findViewById(R.id.BaseActivity_ToolBar);
+        drawerLayout = findViewById(R.id.BaseActivity_drawerLayout);
+        navigationView = findViewById(R.id.BaseActivity_navigationView);
 
         setupToolbar(drawerLayout, toolbar);
 
         navigationView.setNavigationItemSelectedListener(this);
-
-        Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_info_outline_black_24px);
-        toolbar.setOverflowIcon(drawable);
+        infoImageButton = findViewById(R.id.BaseActivity_Toolbar_infoImageButton);
+        infoImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                InfoDialogFragment infoFragment = InfoDialogFragment.newInstance();
+                infoFragment.show(getSupportFragmentManager(), InfoDialogFragment.TAG);
+            }
+        });
 
         preferences = getSharedPreferences(Constants.APP_PREFERENCES, Context.MODE_PRIVATE);
         userName = preferences.getString(Constants.APP_PREFERENCES_USER, "");
 
-        navigationHeaderTextView = navigationView.getHeaderView(0).findViewById(R.id.navigation_header_main_textView_userName);
+        navigationHeaderTextView = navigationView.getHeaderView(0).findViewById(R.id.BaseActivity_NavigationHeader_textView_userName);
         navigationHeaderTextView.setText(userName);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_info, menu);
-        return true;
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         Fragment fragment = null;
         switch (menuItem.getItemId()) {
-            case R.id.menu_startReadItem:
+            case R.id.BaseActivity_Menu_startReadItem:
                 startReadSectionFragment();
                 break;
-            case R.id.menu_resultsItem:
+            case R.id.BaseActivity_Menu_resultsItem:
                 fragment = new ResultSectionFragment();
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.base_fragment_container, fragment, ResultSectionFragment.TAG_RESULT_SECTION)
+                        .replace(R.id.BaseActivity_Fragment_Container, fragment, ResultSectionFragment.TAG_RESULT_SECTION)
                         .commit();
                 getSupportActionBar().setTitle(R.string.general_results);
                 break;
-            case R.id.menu_settingsItem:
+            case R.id.BaseActivity_Menu_settingsItem:
                 fragment = new SettingsSectionFragment();
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.base_fragment_container, fragment, SettingsSectionFragment.TAG_SETTINGS_SECTION)
+                        .replace(R.id.BaseActivity_Fragment_Container, fragment, SettingsSectionFragment.TAG_SETTINGS_SECTION)
                         .commit();
                 getSupportActionBar().setTitle(R.string.general_settings);
                 getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                 toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24px);
                 toolbar.setNavigationOnClickListener(this);
                 break;
-            case R.id.menu_feedbackItem:
+            case R.id.BaseActivity_Menu_feedbackItem:
                 createFeedback();
                 break;
-            case R.id.menu_exitItem:
+            case R.id.BaseActivity_Menu_exitItem:
                 exitFromApp();
         }
         drawerLayout.closeDrawers();
@@ -154,7 +150,7 @@ public class BaseActivity extends BaseToolbar implements NavigationView.OnNaviga
     public void startReadSectionFragment() {
         ReadSectionFragment fragment = new ReadSectionFragment();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.base_fragment_container, fragment)
+                .replace(R.id.BaseActivity_Fragment_Container, fragment)
                 .commit();
         getSupportActionBar().setTitle(R.string.general_start_reading);
     }

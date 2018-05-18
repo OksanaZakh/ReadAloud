@@ -6,15 +6,15 @@
     android:theme="@style/SecondaryBackgroundStyle">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/BaseActivity_Image_Penguin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/navigation_header_main_textView_userName"
+        android:layout_above="@+id/BaseActivity_NavigationHeader_textView_userName"
         android:layout_alignParentStart="true"
         app:srcCompat="@mipmap/pinguin" />
 
     <TextView
-        android:id="@+id/navigation_header_main_textView_userName"
+        android:id="@+id/BaseActivity_NavigationHeader_textView_userName"
         style="@style/TextInNavigationHeaderDimens"
         android:text="TextView" />
 

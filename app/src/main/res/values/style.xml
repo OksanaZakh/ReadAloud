@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="AppCompat.Light.NoActionBar">
         <item name="android:colorPrimary">@color/primaryColor</item>
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:colorButtonNormal">@color/secondaryLightColor</item>
@@ -33,8 +33,10 @@
         <item name="android:footerDividersEnabled">false</item>
     </style>
 
-    <style name="InfoImageButtonStyle">
-
+    <style name="colorPickerStyle">
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:cacheColorHint">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
 </resources>

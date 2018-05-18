@@ -1,7 +1,6 @@
 package com.example.administrator.readaloud.app.ui;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.administrator.readaloud.R;
@@ -24,7 +23,7 @@ public class WelcomeActivity extends AppActivity {
             if (savedInstanceState == null) {
                 WelcomeFragment fragment = new WelcomeFragment();
                 getSupportFragmentManager().beginTransaction()
-                        .add(R.id.main_fragment_container, fragment, WelcomeFragment.TAG_WELCOME)
+                        .add(R.id.WelcomeActivity_Fragment_Container, fragment, WelcomeFragment.TAG_WELCOME)
                         .commit();
             }
         }
