@@ -18,8 +18,11 @@ import android.widget.Toast;
 import com.example.administrator.readaloud.R;
 import com.example.administrator.readaloud.api.ReadHandler.SeekBarHandler;
 import com.example.administrator.readaloud.api.ReadHandler.SpeechListener;
+import com.example.administrator.readaloud.api.ReadHandler.WordsCounter;
 import com.example.administrator.readaloud.app.core.fragments.AppFragment;
 import com.example.administrator.readaloud.utils.Constants;
+
+import java.util.Random;
 
 /**
  * Created by Administrator on 23.01.2018.
@@ -35,6 +38,7 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
     private boolean speechStarted = false;
     private SpeechListener listener;
     private String speechString;
+    private int result;
 
     public enum ReadingStatus {OFF, ON, PAUSE, RESTART}
 
@@ -51,7 +55,14 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
         checkAudioPermission();
         listener = new SpeechListener(getContext());
         speechString = "";
+        result = 0;
+        updateText();
         return viewRoot;
+    }
+
+    private void updateText(){
+        readTextView.setText(getResources().getStringArray(R.array.texts_for_reading)[new Random()
+                .nextInt(getResources().getStringArray(R.array.texts_for_reading).length)]);
     }
 
     private void checkAudioPermission() {
@@ -92,7 +103,6 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
             case R.id.ReadSectionFragment_ButtonRestart:
                 seekBarHandler.restartSeekBar();
                 speechString = "";
-                readTextView.setText(speechString);
                 break;
         }
     }
@@ -108,13 +118,24 @@ public class ReadSectionFragment extends AppFragment implements View.OnClickList
         speechStarted = false;
         listener.stopReading();
         speechString = listener.getSpeechString();
-        readTextView.setText(speechString);
+        Log.d(TAG, "stopReading: Speech text: " + speechString);
+        WordsCounter counter = new WordsCounter(readTextView.getText().toString(), speechString);
+        result = counter.getResult();
+        Log.d(TAG, "stopReading: "+result);
+        if (result > 0) {
+            Toast.makeText(getContext(), getString(R.string.read_section_fragment_result)
+                    + " " + result, Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(getContext(), R.string.read_section_fragment_result_error, Toast.LENGTH_LONG).show();
+        }
+        updateText();
     }
 
     private void restartReading() {
         startReadButton.setImageResource(R.drawable.ic_play_arrow_black_24px);
         listener.restartReading();
         speechStarted = false;
+        updateText();
     }
 
     @Override
