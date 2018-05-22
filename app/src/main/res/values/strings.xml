@@ -26,5 +26,7 @@
     <string name="read_section_fragment_audio_permission_not_provided">Додаток не може працювати без дозволу на використання мікрофону</string>
     <string name="toolbar_info_fragment">Привіт, друже!</string>
     <string name="toolbar_button_info_ok">OK</string>
+    <string name="read_section_fragment_result">Кількість прочитаних слів: </string>
+    <string name="read_section_fragment_result_error">Щось пішло не так.... ((( Почни спочатку!</string>
     <string name="toolbar_info">Привіт мій друже!\nДля роботи додатку\nнеобхідне хороше\nінтернет-з\'єднання.\nЧитай в тиші,\nслова старайся\nвимовляти чітко.\nДля початку\nчитання в розділі\nПОЧАТИ ЧИТАТИ\nнатисни СТАРТ.\nЩоб зупинити\n- ПАУЗУ. Для того,\nщоб розпочати читати\nзову - ПЕРЕЗАПУСК.</string>
 </resources>

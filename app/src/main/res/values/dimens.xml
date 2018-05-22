@@ -24,7 +24,8 @@
         <item name="android:layout_alignParentTop">true</item>
         <item name="android:layout_alignStart">@+id/ReadSectionFragment_ReadingTextView</item>
         <item name="android:layout_marginTop">@dimen/layout_padding_top</item>
-        <item name="android:max">480</item>
+        <item name="android:max">120</item>
+        <!--480-->
     </style>
 
     <style name="CancelButtonInDialogFragmentDimens" parent="AppTheme">

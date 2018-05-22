@@ -54,19 +54,20 @@ public class SeekBarHandler {
             @Override
             public void run() {
                 try {
-                    while (progressValue <= 480 && !isInterrupted()) {
+                    while (progressValue <= 120 && !isInterrupted()) { //480 - 1 minute. 120 15 sec - reduce for debugging
                         Thread.sleep(125);
                         activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 progressValue++;
                                 seekBar.setProgress(progressValue);
-                                if (progressValue == 480) {
+                                if (progressValue == 120) { //480
                                     onSpeechListener.onSpeechListen(ReadSectionFragment.ReadingStatus.OFF);
                                 }
                             }
                         });
                     }
+                    progressValue=0;
                 } catch (InterruptedException e) {
                 }
             }
