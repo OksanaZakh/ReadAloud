@@ -27,6 +27,7 @@ public class SpeechListener implements RecognitionListener {
         speech = SpeechRecognizer.createSpeechRecognizer(context);
         speech.setRecognitionListener(this);
         initialiseRecognitionIntent();
+        partialSpeechString="";
     }
 
     private void initialiseRecognitionIntent() {
